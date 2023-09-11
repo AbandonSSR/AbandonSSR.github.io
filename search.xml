@@ -1,0 +1,2229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>001.分析不同时期物体的形变量</title>
+    <url>/2022/35639.html/</url>
+    <content><![CDATA[<p>使用LiDAR仪器对物体进行多期扫描，并使用CloudCompare软件对多期点云进行配准与形变量分析</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开两个不同时期的点云<br><img src="https://s2.loli.net/2022/07/24/owebl4zh1PZKjsu.png" alt="CloudCompare.001.01.png"></li>
+<li>选中任一时期的点云，点击工具栏中“Translate&#x2F;Rotate” (或菜单栏“Edit&#x2F; Translate&#x2F;Rotate”) 工具，拖动点云，使其与另一个大致对齐，可进行多次调整<br><img src="https://s2.loli.net/2022/07/24/CIQHyFURtwhPL7d.png" alt="CloudCompare.001.02.png"></li>
+<li>选中两个不同时期的点云，点击工具栏中“Finely registers already (roughly) aligned entities (clouds or meshes)”(或菜单栏“Tools&#x2F;Registiation&#x2F;Fine registration(ICP)”)工具，主要设置以下参数</li>
+</ol>
+<ul>
+<li>aligned\reference：对齐和参考点云</li>
+<li>Parameters&#x2F;Number of iterations：迭代次数</li>
+<li>Parameters&#x2F;RMS differernce：中误差</li>
+<li>Research&#x2F; Random sampling limit：随机采样限制<br><img src="https://s2.loli.net/2022/07/24/gP3mY6JdczxQBrA.png" alt="CloudCompare.001.03.png"></li>
+</ul>
+<ol start="4">
+<li>选中两个不同时期的点云，点击工具栏中“Compute cloud&#x2F;cloud distance”(或菜单栏“Tools&#x2F;Distances&#x2F;Cloud&#x2F;Cloud Dist.”)工具，设置比较和参考点云<br><img src="https://s2.loli.net/2022/07/24/TVQBLwqfEnoGKl9.png" alt="CloudCompare.001.04.png"></li>
+</ol>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://www.cloudcompare.org/samples/CloudCompareGardenData.7z">http://www.cloudcompare.org/samples/CloudCompareGardenData.7z</a></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li>在第2步进行大致对齐的时候，也可以采用工具栏中“Aligns two clouds by picking (at least 4) equivalent point pairs”(或菜单栏“Tools&#x2F;Registiation&#x2F;Align (point pairs picking)”)工具，选择位于两期点云至少4个同名点，进行大致对齐</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>002.对点云建立泊松曲面模型</title>
+    <url>/2022/52283.html/</url>
+    <content><![CDATA[<p>使用CloudCompare软件对单个物体的点云数据建立泊松曲面模型</p>
+<span id="more"></span>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开点云数据，以斯坦福大学兔子点云为例，仅导入坐标数据<br><img src="https://s2.loli.net/2022/07/24/7vJLgeRNUfdkDsb.png" alt="CloudCompare.002.01.png"></li>
+<li>选中点云，点击菜单栏中“Edit&#x2F;Normals&#x2F;Compute”工具，计算法线量。主要设置以下参数</li>
+</ol>
+<ul>
+<li>Local surface mode：Plane&#x2F;Quadric&#x2F;Triangulation — 局部表面模型：平面、二次曲面、三角剖分</li>
+<li>radius：搜索半径，当局部表面模型为平面或二次曲面时需要设置<br><img src="https://s2.loli.net/2022/07/24/mHLWJzCX3wK6oSi.png" alt="CloudCompare.002.02.png"></li>
+</ul>
+<ol start="3">
+<li>进行泊松曲面重建，选中点云，点击右侧工具栏中“Poisson Surface Reconstruction”(或菜单栏“Plugins&#x2F;PoissonRecon”)工具，主要设置以下参数</li>
+</ol>
+<ul>
+<li>Octree depth：八叉树深度</li>
+<li>Output density as SF：建议勾选<br><img src="https://s2.loli.net/2022/07/24/GksdwJNahCbxiMX.png" alt="CloudCompare.002.03.png"></li>
+</ul>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz</a></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>003.对仅含坐标的点云设置环境光遮蔽</title>
+    <url>/2022/25132.html/</url>
+    <content><![CDATA[<p>当点云仅含坐标信息时，导入CloudCompare后无法分辨各类物体，因此需要设置环境光遮蔽以分辨各位物体</p>
+<span id="more"></span>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开仅含X、Y、Z坐标的点云<br><img src="https://s2.loli.net/2022/07/24/BEewamIQLiNTogR.png" alt="CloudCompare.003.01.png"></li>
+<li>设置环境光遮蔽，选中点云，点击工具栏中“Ambient Occlusion for mesh or point cloud”(或菜单栏“Plugins&#x2F;PCV”)工具，保持默认参数即可，根据需要可取消勾选“Only northern hemisphere”。<br><img src="https://s2.loli.net/2022/07/24/by4Y6Gd8ISMC2kH.png" alt="CloudCompare.003.02.png"></li>
+</ol>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz</a></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>本文在环境光遮蔽时需要等待一段时间才可以，对此CloudCompare也提供了两种实时显示各部分细节的工具。</p>
+<ul>
+<li>开启<br>点击工具栏中“Eye-dome Lighting OpenGL shader(或Screen Space Ambient Occlusion OpenGL shader)”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;EDL shader(或SSAO shader)”)</li>
+<li>关闭<br>点击工具栏中“Remove Filter”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;Remove Filter)</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/01/vyPulT4BLg2iY6m.png" alt="CloudComapre.003.03.png"></p>
+<p><img src="https://s2.loli.net/2022/08/01/go8dFN6lIS4kPsM.png" alt="CloudComapre.003.04.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>005.格网法计算土石方量</title>
+    <url>/2022/27758.html/</url>
+    <content><![CDATA[<p>利用格网法对采集的高密度地面点云计算基于某一高程的土石方量</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开地面点云，以某露天矿中心部分点云为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/xHmgRM9fBDNrcYa.png" alt="CloudCompare.005.01.png"></p>
+<ol start="2">
+<li><p>计算土石方量，选中地面点云，点击菜单栏中“Tools&#x2F;Volume&#x2F;Compute 2.5D volume”工具，主要进行以下参数设置，最后点击“Update”按钮。在“Results”中可以找到“Add volume”和“Removed volume”，即为土石方量。</p>
+<ul>
+<li><p>Ground &#x2F; Before</p>
+<ul>
+<li><p>Source：Constant(常数)</p>
+</li>
+<li><p>Default height：任意高程</p>
+</li>
+</ul>
+</li>
+<li><p>Ceil &#x2F; After</p>
+<ul>
+<li>Source：地面点云</li>
+<li>Empty cells：interpolate(插值)&#x2F;leave empty(留空)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+<li><p>Grid</p>
+<ul>
+<li>step：格网尺寸</li>
+<li>projection dir.：选择“Z”</li>
+<li>cell height：average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/R5zPJ8bZdqGVLl9.png" alt="CloudCompare.005.02.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>004.车载LiDAR点云道路两侧地物自动分割</title>
+    <url>/2022/17174.html/</url>
+    <content><![CDATA[<p>车载LiDAR点云中含有行人、车辆、路灯、行道树等，使用CSF和聚类工具自动将地物分隔</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开点云数据(已去除噪声点)</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/26/62lrZtgNU1x4Afn.png" alt="CloudCompare.004.01.png"></p>
+<ol start="2">
+<li><p>进行CSF滤波，点击工具栏中“CSF Filter”(或菜单栏中“Plugins&#x2F;CSF Filter”)工具，主要进行以下参数设置</p>
+<ul>
+<li>Scense：Steep slope&#x2F;Relief&#x2F;Flat<br>分别代表陡坡、缓坡、平地，根据点云特点选择合适的类型</li>
+<li>Cloth resolution<br>用于覆盖地形的布料的网格大小，设置的布料分辨率越大，获得的DEM越粗糙</li>
+<li>Max iterations<br>地形模拟的最大迭代次数</li>
+<li>Classification threshold<br>根据点与模拟地形的距离将点云分为地面和非地面部分的阈值</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/26/epKjgdbUSIR8hXk.png" alt="CloudCompare.004.02.png"></p>
+<ol start="3">
+<li><p>对互不联通的物体进行聚类，点击菜单栏中“Label connected components”(或菜单栏中“Tools&#x2F;Segmentation&#x2F;Label connected Comp.”)工具，主要进行以下参数设置</p>
+<ul>
+<li><p>Octree Leval<br>八叉树索引级别</p>
+</li>
+<li><p>Min. points per componert<br>每一个类别中的点数量的最小值</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/26/t72km6ZYPRxIQDw.png" alt="CloudCompare.004.03.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>006.制作多个视角之间切换的视频</title>
+    <url>/2022/3116.html/</url>
+    <content><![CDATA[<p>通过Animation插件可将多个视角之间的切换制作成视频，以方便展示模型或点云</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开需要展示的点云或模型，以斯坦福大学的兔子为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/JVy98tSKvjOiZTH.png" alt="CloudCompare.006.01.png"></p>
+<ol start="2">
+<li>将兔子切换到合适的位置，按“Ctrl + V”保存当前视角(或点击菜单栏中“Display&#x2F;Save viewport as object”工具)。重复该步骤，直到需要的视角均已保存。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/W4TOXtVj2nw9Zy5.png" alt="CloudCompare.006.02.png"></p>
+<ol start="3">
+<li>选择上步创建的全部视角，点击工具栏中“Create a movie from a series of views”(或菜单栏中“Plugins&#x2F;Animation”)工具，设置以下参数。最后点击“Render”。<ul>
+<li>Total duration：全部时长，以秒为单位</li>
+<li>Automatic steps duration：勾选</li>
+<li>Frame rate：帧率，默认25帧&#x2F;s</li>
+<li>Bitrate：比特率，默认5000kbps</li>
+<li>Output file：输出位置</li>
+<li>Formate：输出格式，默认为自动</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/yLXC3TlNJVPagOH.png" alt="CloudCompare.006.03.png"></p>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz</a></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>007.利用地面点云生成等高线</title>
+    <url>/2022/31015.html/</url>
+    <content><![CDATA[<p>通过使用机载或地面LiDAR获取山区高密度点云数据，采用格网法生成等高线</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开点云数据。以某地区露天采煤矿点云数据为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/FjL6He27Xxw8UoO.png" alt="CloudCompare.007.01.png"></p>
+<ol start="2">
+<li>选中点云，点击菜单栏中“Tools&#x2F;Projection&#x2F;Rasterize”(或工具栏中“Convert a cloud to 2D raster”)工具，主要进行以下参数设置。最后点击“Update grid”。<ul>
+<li><p>Grid</p>
+<ul>
+<li>step：格网尺寸，根据需要可修改</li>
+<li>active layer：选择Height grid values</li>
+</ul>
+</li>
+<li><p>Projection</p>
+<ul>
+<li>direction：投影方向，默认为Z轴</li>
+<li>cell height：单元格高度，可选择minimum(最小值)&#x2F;average(平均值)&#x2F;maximum(最大值)</li>
+</ul>
+</li>
+<li><p>Empyt cells</p>
+<ul>
+<li>Fill with：空白单元格填充方式，可选择leave empty(留空)&#x2F;interpolate(插值)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/iVskNodJp735xRM.png" alt="CloudCompare.007.02.png"></p>
+<ol start="3">
+<li>在左下侧处，切换到“Contour plot”选项卡，进行以下参数设置。点击“Generate”生成等高线，可在右侧视图中放大预览，最后点击“Export”导出到软件中。<ul>
+<li>Start value：起始高程</li>
+<li>step：等高距</li>
+<li>Min. vertex count：每条等高线最少由多少个点连接</li>
+<li>Line width：线宽</li>
+<li>color width：等高线是否有颜色</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/LqwgSRia1O7TkyW.png" alt="CloudCompare.007.03.png"></p>
+<p><img src="https://s2.loli.net/2022/08/02/6YwKofFU8OlzQib.png" alt="CloudCompare.007.04.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>008.利用地面点云生成DEM</title>
+    <url>/2022/25651.html/</url>
+    <content><![CDATA[<p>通常有两种生成DEM的方法，分别为格网法和不规则三角网法两种，本文总结了如何使用这两种方法对地面点云生成DEM</p>
+<span id="more"></span>
+
+<h1 id="方式一-格网法"><a href="#方式一-格网法" class="headerlink" title="方式一(格网法)"></a>方式一(格网法)</h1><ol>
+<li>打开点云数据。以某地区露天采煤矿点云数据为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/FjL6He27Xxw8UoO.png" alt="CloudCompare.007.01.png"></p>
+<ol start="2">
+<li>选中点云，点击菜单栏中“Tools&#x2F;Projection&#x2F;Rasterize”(或工具栏中“Convert a cloud to 2D raster”)工具，主要进行以下参数设置。最后点击“Update grid”。<ul>
+<li><p>Grid</p>
+<ul>
+<li>step：格网尺寸，根据需要可修改</li>
+<li>active layer：选择Height grid values</li>
+</ul>
+</li>
+<li><p>Projection</p>
+<ul>
+<li>direction：投影方向，默认为Z轴</li>
+<li>cell height：单元格高度，可选择minimum(最小值)&#x2F;average(平均值)&#x2F;maximum(最大值)</li>
+</ul>
+</li>
+<li><p>Empyt cells</p>
+<ul>
+<li>Fill with：空白单元格填充方式，可选择leave empty(留空)&#x2F;interpolate(插值)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/iVskNodJp735xRM.png" alt="CloudCompare.007.02.png"></p>
+<ol start="3">
+<li>在左下侧处，切换到“Export”选项卡。点击“Mesh”按钮，即可导出Mesh模型；点击“Raster”按钮，勾选“Export heights”，可导出TIFF格式。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/04/lgH8GvqRWI13nAS.png" alt="CloudCompare.008.01.png"></p>
+<p><img src="https://s2.loli.net/2022/08/04/WFrZU9zpObaNk3w.png" alt="CloudCompare.008.02.png"></p>
+<h1 id="方法二-不规则三角网法"><a href="#方法二-不规则三角网法" class="headerlink" title="方法二(不规则三角网法)"></a>方法二(不规则三角网法)</h1><ol>
+<li>打开点云数据。以某地区露天采煤矿点云数据为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/FjL6He27Xxw8UoO.png" alt="CloudCompare.007.01.png"></p>
+<ol start="2">
+<li>选中点云，点击菜单栏中“Edit&#x2F;Mesh&#x2F;Delaunay 2.5D”(XY plane&#x2F;best fitting plane指投影到XOY平面或最佳拟合平面)，设置“Max edge length(三角网最大边长度)”(注：“0”代表不限制)。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/04/WuI4aFgSMBY9VpR.png" alt="CloudCompare.008.03.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>GDAL：C#开发环境设置</title>
+    <url>/2023/5137.html/</url>
+    <content><![CDATA[<p>本文简要介绍C#开发环境下，GDAL库的配置。</p>
+<span id="more"></span>
+
+<h1 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h1><ol>
+<li><p>使用NuGet包管理器，安装『GDAL』和『GDAL.Native』</p>
+</li>
+<li><p>在程序主函数中，写入如下代码配置GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    GdalConfiguration.ConfigureGdal();</span><br><span class="line">    GdalConfiguration.ConfigureOgr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下命令空间</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><ul>
+<li>使用NuGet包管理器导入GDAL库时，请使用控制台或WinForm项目，不要使用WPF项目，具体原因请查看「<a href="https://abandonssr.github.io/2023/30480.html/">WPF的坑：NuGet引入源代码包导致编译失败</a>」文章。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>009.命令行调用CloudCompare部分功能</title>
+    <url>/2022/56715.html/</url>
+    <content><![CDATA[<p>在某些情况下，不便于打开GUI界面，则可以使用命令行调用CloudComapre部分功能。本文写于Windows 10系统环境下，Linux\MacOS系统稍有不同。</p>
+<span id="more"></span>
+
+<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><ol>
+<li>在搜索栏中搜索“编辑系统环境变量”并打开。(或：在“此电脑”右键选择“属性”，在打开的页面找到并点击“高级系统设置”)。</li>
+</ol>
+<img src="https://s2.loli.net/2022/08/07/oR4xPfpsQuktIqE.png" alt="CloudCompare.009.01.png" style="zoom:67%;" />
+
+<ol start="2">
+<li>点击下方的“环境变量(N)…”，接着在“系统变量(S)”中选中“Path”行并点击“编辑”。</li>
+</ol>
+<img src="https://s2.loli.net/2022/08/07/1axg5QzIEOGsH36.png" alt="CloudCompare.009.02.png" style="zoom:67%;" />
+
+<ol start="3">
+<li>点击右侧的“浏览”，定位到“CloudCompare”安装路径，之后点击“确定”，直至返回到<strong>步骤1</strong>打开的页面。</li>
+</ol>
+<img src="https://s2.loli.net/2022/08/07/2Jm6jYkqtCcMKLr.png" alt="CloudCompare.009.03.png" style="zoom:67%;" />
+
+<ol start="4">
+<li>打开命令行，输入“CloudCompare”命令，若能打开软件，则表明已配置成功。</li>
+</ol>
+<h1 id="命令行调用功能"><a href="#命令行调用功能" class="headerlink" title="命令行调用功能"></a>命令行调用功能</h1><ul>
+<li><p>例1：对点云按空间距离1米进行重采样</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CloudCompare -O D:\HeXinQu.las -SS SPATIAL 5.0</span><br></pre></td></tr></table></figure></li>
+</ul>
+<img src="https://s2.loli.net/2022/08/07/rHkQEvVDoYiaFe6.png" alt="CloudCompare.009.04.png" style="zoom:67%;" />
+
+<ul>
+<li><p>例2：使用CSF插件提取地面点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Cloudcompare -O D:\Data.las -CSF -SCENES FLAT -CLOTH_RESOLUTION 1.0 -MAX_ITERATION 500 -CLASS_THRESHOLD 0.5 -EXPORT_GROUND -EXPORT_OFFGROUND</span><br></pre></td></tr></table></figure></li>
+</ul>
+<img src="https://s2.loli.net/2022/08/07/ZFrjuzqgTHWIoav.png" alt="CloudCompare.009.05.png" style="zoom: 67%;" />
+
+<ul>
+<li>更多命令参数见官方文档：<br><a href="https://www.cloudcompare.org/doc/wiki/index.php/Command_line_mode">https://www.cloudcompare.org/doc/wiki/index.php/Command_line_mode</a></li>
+<li>命令行输入本文的两个例子</li>
+</ul>
+<img src="https://s2.loli.net/2022/08/07/aETNW5uI6DkHJGR.png" alt="CloudCompare.009.06.png" style="zoom:67%;" />]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CesiumForUnity快速入门</title>
+    <url>/2023/59239.html/</url>
+    <content><![CDATA[<p>Cesium For Unity是将 Cesium 和  Unity 结合，既拥有 Cesium 导入含有地理坐标资源的能力，又拥有与 Unity 各类游戏对象结合的能力，是未来智慧城市、智慧乡村等软件系统的发展方向，本文将介绍『Cesium For Unity』的快速上手。</p>
+<span id="more"></span>
+
+<h1 id="安装Unity"><a href="#安装Unity" class="headerlink" title="安装Unity"></a>安装Unity</h1><p>版本要求：不得低于Unity 2021.3.2f1</p>
+<p>安装过程：略</p>
+<h1 id="创建Unity项目"><a href="#创建Unity项目" class="headerlink" title="创建Unity项目"></a>创建Unity项目</h1><ol>
+<li>选择『3D(URP)』或『3D(HDRP)』核心模板</li>
+<li>输入『项目名称』和『位置』</li>
+<li>点击『创建项目』</li>
+</ol>
+<p><img src="https://s2.loli.net/2023/06/10/ny2liESqWTZY3uR.png" alt="CesiumForUnity_001.png"></p>
+<h1 id="导入CesiumForUnity包"><a href="#导入CesiumForUnity包" class="headerlink" title="导入CesiumForUnity包"></a>导入CesiumForUnity包</h1><h2 id="添加Scoped-Registry"><a href="#添加Scoped-Registry" class="headerlink" title="添加Scoped Registry"></a>添加Scoped Registry</h2><ol>
+<li><p>在菜单栏中，选择『Edit→Project Settings』<br><img src="https://s2.loli.net/2023/06/10/vHhZwiGVlMjy4kz.png" alt="CesiumForUnity_002.png"></p>
+</li>
+<li><p>在左侧选择『Package Manager』，添加如下信息并点击『Save』</p>
+<ul>
+<li>Name：Cesium</li>
+<li>URL：<a href="https://unity.pkg.cesium.com/">https://unity.pkg.cesium.com</a></li>
+<li>Scope(s)：com.cesium.unity</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/10/Ssv1ByGo8nH65tf.png" alt="CesiumForUnity_003.png"></p>
+</li>
+</ol>
+<h2 id="导入CesiumForUnity包-1"><a href="#导入CesiumForUnity包-1" class="headerlink" title="导入CesiumForUnity包"></a>导入CesiumForUnity包</h2><ol>
+<li>在菜单栏中，选择『Window→Package Manager』<br><img src="https://s2.loli.net/2023/06/10/RA1KiXQeaMqG6oH.png" alt="CesiumForUnity_004.png"></li>
+<li>将左上角的『Packages』改为『My Registries』<br><img src="https://s2.loli.net/2023/06/10/IkOesdCfB5DhEqZ.png" alt="CesiumForUnity_005.png"></li>
+<li>在左侧选择『Cesium For Unity』包，再点击『Install』<br><img src="https://s2.loli.net/2023/06/10/QJjVWvlBm2aiNDd.png" alt="CesiumForUnity_006.png"></li>
+</ol>
+<h1 id="连接到Cesium-ion平台"><a href="#连接到Cesium-ion平台" class="headerlink" title="连接到Cesium ion平台"></a>连接到Cesium ion平台</h1><ol>
+<li>在菜单栏中，选择『Cesium→Cesium』<br><img src="https://s2.loli.net/2023/06/10/hyfm4KBCbo8gUZI.png" alt="CesiumForUnity_007.png"></li>
+<li>在选项卡『Cesium』中，找到并点击『Connect to Cesium ion』，登录账号并授权<br><img src="https://s2.loli.net/2023/06/10/r3oJsD4UdxaSvjB.png" alt="CesiumForUnity_008.png"></li>
+<li>在选项卡『Cesium』中，点击『Token』<br><img src="https://s2.loli.net/2023/06/10/dtVQ4OjoaWD9icr.png" alt="CesiumForUnity_009.png"></li>
+<li>先选择『Cesium a new token』，再点击『Create New Project Default Token』<br><img src="https://s2.loli.net/2023/06/10/ksBShmiF1ZX7LHV.png" alt="CesiumForUnity_010.png"></li>
+</ol>
+<h1 id="向场景中添加底图"><a href="#向场景中添加底图" class="headerlink" title="向场景中添加底图"></a>向场景中添加底图</h1><ol>
+<li>在选项卡『Cesium』中，分别点击『Cesium World Terrain』和『Dynamic Camera』右侧的加号<br><img src="https://s2.loli.net/2023/06/10/arqjfgHTXhQmSNz.png" alt="CesiumForUnity_011.png"></li>
+<li>在选项卡『Hierarchy』中，删除『SampleScene→Main Camera』</li>
+<li>在选项卡『Hierarchy』中，选择『CesiumGeoreference』对象。在选项卡『Inspector』中，找到『Origin(Longitude Latitude Height)』选项，修改所在位置<br><img src="https://s2.loli.net/2023/06/10/Ok7EN1nX5jFQmJP.png" alt="CesiumForUnity_014.png"></li>
+</ol>
+<h1 id="试玩"><a href="#试玩" class="headerlink" title="试玩"></a>试玩</h1><ol>
+<li>点击菜单栏下方的控制按钮<br><img src="https://s2.loli.net/2023/06/10/ZvqMXt9Wl2SeJaQ.png" alt="CesiumForUnity_012.png"></li>
+<li>使用『W、A、S、D』和『Q、E』移动相机<br><img src="https://s2.loli.net/2023/06/10/pSAis7xHOnohMlP.png" alt="CesiumForUnity_013.png"></li>
+</ol>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo使用abbrlink插件生成文章固定编号链接</title>
+    <url>/2023/13548.html/</url>
+    <content><![CDATA[<p>Hexo生成的静态链接默认生成规则『:year&#x2F;:month&#x2F;:day&#x2F;:title』，这个规则在修改文章标题后链接也会改变，不利于分享给别人，本文将利用『hexo-abbrlink』插件将文章生成固定链接</p>
+<span id="more"></span>
+
+<h1 id="插件1：hexo-abbrlink"><a href="#插件1：hexo-abbrlink" class="headerlink" title="插件1：hexo-abbrlink"></a>插件1：hexo-abbrlink</h1><p>该插件生成的固定链接为随机形式，官网：<a href="https://github.com/rozbo/hexo-abbrlink">https://github.com/rozbo/hexo-abbrlink</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>打开config.yml文件，修改permalink的值</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形式1</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span> </span><br><span class="line"><span class="comment"># 形式2</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink.html</span></span><br></pre></td></tr></table></figure>
+
+<p>添加如下内容，其中：alg为链接的生成算法，可选crc16和crc32；rep为生成的链接形式，可选hex和dec</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abbrlink:</span><br><span class="line">  alg: crc32</span><br><span class="line">  rep: hex</span><br></pre></td></tr></table></figure>
+
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><ul>
+<li>crc16 &amp; hex：…&#x2F;posts&#x2F;66c8.html</li>
+<li>crc16 &amp; dec：…&#x2F;posts&#x2F;65535.html</li>
+<li>crc32 &amp; hex：…&#x2F;posts&#x2F;8ddf18fb.html</li>
+<li>crc32 &amp; dec：…&#x2F;posts&#x2F;1690090958.html</li>
+</ul>
+<h1 id="插件2：hexo-abbrlink2"><a href="#插件2：hexo-abbrlink2" class="headerlink" title="插件2：hexo-abbrlink2"></a>插件2：hexo-abbrlink2</h1><p>该插件生成的固定链接为有序增长的形式，官网：<a href="https://github.com/rozbo/hexo-abbrlink2">https://github.com/rozbo/hexo-abbrlink2</a></p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink2 --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><p>打开config.yml文件，修改permalink的值</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 形式</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br><span class="line"><span class="comment"># 形式2</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink.html</span></span><br></pre></td></tr></table></figure>
+
+<p>添加如下内容，其中：start为起始id</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abbrlink:</span><br><span class="line">  start: 1000</span><br></pre></td></tr></table></figure>
+
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><ul>
+<li>链接1：…&#x2F;posts&#x2F;1000.html</li>
+<li>链接2：…&#x2F;posts&#x2F;1001.html</li>
+<li>链接3：…&#x2F;posts&#x2F;1002.html</li>
+<li>链接4：…&#x2F;posts&#x2F;1003.html</li>
+</ul>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo_Next主题使用word_counter插件统计文章字数和阅读时间</title>
+    <url>/2023/31996.html/</url>
+    <content><![CDATA[<p>Hexo默认没有统计博客文章的字数和阅读时间的功能。本文利用『Hexo Word Counter』插件实现该功能</p>
+<span id="more"></span>
+
+<h1 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h1><p><a href="https://github.com/next-theme/hexo-word-counter">https://github.com/next-theme/hexo-word-counter</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>打开config.yml文件，添加如下内容</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude_codeblock:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br><span class="line">  <span class="attr">suffix:</span> <span class="string">&quot;mins.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li>symbols为是否统计字数</li>
+<li>time为是否统计阅读时间</li>
+<li>total_symbols为是否统计总字数</li>
+<li>total_time为是否统计总阅读时间</li>
+<li>exclude_codeblock为是否排除代码块</li>
+<li>wpm为每分钟阅读的字数，一般慢速为200，正常为275，快速为350</li>
+<li>suffix为时间后缀，若阅读时间小于60分钟，则添加此后缀</li>
+</ul>
+<p>打开Next主题配置文件_config.next.yml，可对以下参数修改</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="attr">item_text:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p><img src="https://s2.loli.net/2023/06/08/U6neBiI8TSC2cHu.png" alt="文章的字数和阅读时间统计.png"></p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Git常用命令</title>
+    <url>/2022/7065.html/</url>
+    <content><![CDATA[<p>Git是一个免费的、开源的分布式版本控制系统，本文总结了一些Git常用命令，方便初学者查看命令</p>
+<span id="more"></span>
+
+<ul>
+<li><p>用户信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 配置全局用户名称</span><br><span class="line">git config --global user.name XXX</span><br><span class="line">// 配置全局用户邮箱</span><br><span class="line">git config --global user.email XXX@XXX.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 从本地创建仓库</span><br><span class="line">git init</span><br><span class="line">// 克隆远程仓库</span><br><span class="line">git <span class="built_in">clone</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看仓库状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加文件到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 添加一个或多个文件到暂存区</span><br><span class="line">git add XXX.cpp XXX.h</span><br><span class="line">// 添加指定文件夹到暂存区</span><br><span class="line">git add XXX</span><br><span class="line">// 添加当前目录下所有文件</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交暂存区到本地仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 命令中“XXX”表示提交备注信息</span><br><span class="line">git commit -m <span class="string">&quot;XXX&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看历史提交</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 查看历史提交的详细信息</span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line">// 查看历史记录的简洁的版本</span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回退版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 回退所有内容到上一个版本。HEAD表示当前版本，HEAD后面加N个^代表回退N个版本</span><br><span class="line">git reset HEAD^</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前的远程仓库别名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 第一个XXX为别名，第二个XXX为远程仓库地址</span><br><span class="line">git remote add XXX XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送到远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 第一个XXX为别名，第二个XXX为分支</span><br><span class="line">git push XXX XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// XXX为远程仓库别名</span><br><span class="line">git remote <span class="built_in">rm</span> XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成SSH Key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// username@XXX.com为Github等远程仓库注册邮箱</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;username@XXX.com&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看SSH Key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 在.ssh文件夹中输入命令</span><br><span class="line"><span class="built_in">cat</span> id_rsa.pub</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LAS文件格式</title>
+    <url>/2022/26024.html/</url>
+    <content><![CDATA[<p>LAS文件是二进制格式，其标准格式由美国摄影测量与遥感学会（ASPRS）的 LiDAR 专业委员会进行发布，最新的版本为 2019 年 7 月发布的 LAS 1.4 - R15。LAS1.4 版本的文件结构可分为 4 部分，包括公共头文件区、变长记录区、点数据记录区和扩展变长记录区。下面简要介绍LAS文件各部分编码格式。</p>
+<span id="more"></span>
+
+<h1 id="公共头文件区"><a href="#公共头文件区" class="headerlink" title="公共头文件区"></a>公共头文件区</h1><p>公共头文件区记载数据点的数量、格式、数据范围、变长记录区数量、点云数据真实坐标的 X、Y、Z方向的比例因子和偏移量等 LAS 文件的基本信息，所有项目需填写数据，若无数据则置零。下表为 LAS 1.0 - 1.4 R15公共头文件区的对比。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">LAS 1.0</th>
+<th align="center">LAS 1.1</th>
+<th align="center">LAS 1.2</th>
+<th align="center">LAS 1.3 R11</th>
+<th align="center">LAS 1.4 R15</th>
+<th align="center">Format</th>
+<th align="center">Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">File  Signature (“LASF”)</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[4]</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Source ID</td>
+<td align="center">保留字节，置零</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Global  Encoding</td>
+<td align="center">保留字节，置零</td>
+<td align="center">保留字节，置零</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 1</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 2</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 3</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 4</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char[8]</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Version  Major</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Version  Minor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">System  Identifier</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[32]</td>
+<td align="center">32 bytes</td>
+</tr>
+<tr>
+<td align="center">Generating  Software</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[32]</td>
+<td align="center">32 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Creation Day of Year</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Creation Year</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Header  Size</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Offset  to Point Data</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Variable Length Records</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Point  Data Record Format</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Point  Data Record Length</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Legacy  Number of Point Records</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Legacy  Number of Point by Return</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long[5]</td>
+<td align="center">20 bytes</td>
+</tr>
+<tr>
+<td align="center">X Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Y Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Z Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">X Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Y Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Z Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max X</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min X</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max Y</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min Y</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max Z</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min Z</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Start of  Waveform Data Packet Record</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Start  of First Extended   Variable Length Record</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Extended Variable Length Records</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Point Records</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Points by Return</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long[15]</td>
+<td align="center">120 bytes</td>
+</tr>
+</tbody></table>
+<h1 id="点数据记录区"><a href="#点数据记录区" class="headerlink" title="点数据记录区"></a>点数据记录区</h1><p>点数据记录区位于变长记录区之后，主要用于存储点云数据，包括每个激光点的三维坐标信息、回波强度信息等相关属性，是 LAS 文件的核心。在 LAS 1.4 版本中，有 11 种点数据类型。点数据类型在公共头文件区中已经指定，每个 LAS 文件只有 1 种点数据类型。LAS 1.0 -  1.3 仅包含 0 - 5 共 6 种点数据类型，LAS 1.4 R15 包含 0 - 10 共11 种点数据类型。下表为 0 - 10 点数据类型的对比。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th align="center">Format</th>
+<th align="center">Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Y</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Z</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Intensity</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Return Number</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">3 bits (bits 0-2)</td>
+<td align="center">3 bits</td>
+</tr>
+<tr>
+<td align="center">Return Number</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 0-3)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Number of Returns (Given  Pulse)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">3 bits (bits 3-5)</td>
+<td align="center">3 bits</td>
+</tr>
+<tr>
+<td align="center">Number of Returns (Given  Pulse)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 4-7)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Classification Flags</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 0-3)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Scanner Channel</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">2 bits (bits 4-5)</td>
+<td align="center">2 bits</td>
+</tr>
+<tr>
+<td align="center">Scan Direction Flag</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">1 bit (bit 6)</td>
+<td align="center">1 bit</td>
+</tr>
+<tr>
+<td align="center">Edge of Flight Line</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">1 bit (bit 7)</td>
+<td align="center">1 bit</td>
+</tr>
+<tr>
+<td align="center">Classification</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Scan Angle Rank (-90 to +90) –  Left Side</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">signed char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">User Data</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Scan Angle</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Point Source ID</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">GPS Time</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Red</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Green</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Blue</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Wave Packet Descriptor Index</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Byte Offset to Waveform Data</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Waveform Packet Size in Bytes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Return Point Waveform Location</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dx</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dy</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">NIR</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+</tbody></table>
+<p>下表为 LAS 1.0 - 1.4 R15 可以使用的点数据类型。</p>
+<table>
+<thead>
+<tr>
+<th align="center">版本</th>
+<th align="center">点数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LAS 1.0、1.1、1.2、1.3 R11</td>
+<td align="center">0、1、2、3、4、5</td>
+</tr>
+<tr>
+<td align="center">LAS 1.4 R15</td>
+<td align="center">0、1、2、3、4、5、6、7、8、9、10</td>
+</tr>
+</tbody></table>
+<p>下表为 0 - 10 点数据类型的最小尺寸。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">20 bytes</td>
+<td align="center">4</td>
+<td align="center">57 bytes</td>
+<td align="center">8</td>
+<td align="center">38 bytes</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">28 bytes</td>
+<td align="center">5</td>
+<td align="center">63 bytes</td>
+<td align="center">9</td>
+<td align="center">59 bytes</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">26 bytes</td>
+<td align="center">6</td>
+<td align="center">30 bytes</td>
+<td align="center">10</td>
+<td align="center">67 bytes</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">34 bytes</td>
+<td align="center">7</td>
+<td align="center">36 bytes</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>美国摄影测量与遥感学会（ASPRS）：<a href="https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities">https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>PLY文件格式</title>
+    <url>/2022/29674.html/</url>
+    <content><![CDATA[<p>PLY 是一种计算机文件格式，称为多边形文件格式或斯坦福三角格式。 它主要设计用于存储来自 3D 扫描仪的 3D 数据，可以存储各种属性，包括颜色和透明度、表面法线、纹理坐标和数据置信度值。 文件格式有两种版本，一种是 ASCII，另一种是二进制。</p>
+<span id="more"></span>
+
+<h1 id="格式解析"><a href="#格式解析" class="headerlink" title="格式解析"></a>格式解析</h1><p>典型的 PLY 文件由如下三部分构成：文件头、顶点列表、面片列表。如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Header</span><br><span class="line">Vertex List</span><br><span class="line">Face List</span><br><span class="line">(lists of other elements)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h2><p>文件头是由一系列以回车结尾（Windows 中为 “\r\n”，Linux 中为 “\n”，Mac中为 “\r”）的文本行，用于描述文件的其他部分。文件头包括每个元素类型的描述，包括元素的名称、数量。此外文件头还说明了文件是哪种存储类型。典型的文件头如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ply</span><br><span class="line">format ascii 1.0</span><br><span class="line">comment made by AbandonSSR</span><br><span class="line">element vertex 8</span><br><span class="line">property float x</span><br><span class="line">property float y</span><br><span class="line">property float z</span><br><span class="line">element face 6</span><br><span class="line">property list uchar int vertex_indices</span><br><span class="line">end_header</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>PLY 文件始终以 “ply” 字符为起始，可通过此行判断是否为 PLY 文件</p>
+</li>
+<li><p>第 2 行为 PLY 文件的格式说明，以 “format” 为开头，后面跟格式和版本号。目前有三种格式 ascii、binary_little_endian、binary_big_endian，以及唯一的版本号 1.0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">format ascii 1.0</span><br><span class="line">format binary_little_endian 1.0</span><br><span class="line">format binary_big_endian 1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第 3 行为 PLY 文件的附加说明，以 “comment” 开头，后面跟说明文字。此行可空缺</p>
+</li>
+<li><p>第 4 - 9 行为 PLY 文件的某种数据元素。元素说明行：以 “element” 开头，后面跟元素的名称和数量。元素属性行：以 “property” 开头，后面跟属性的数据类型和名称。属性行有两种类型，一种由 3 列构成，后面两列为数据类型和名称；另一种由 5 列构成的列表属性，其中第二列为列表属性标识符，第三列为列表属性由多少列构成，第四列为列表属性中的数据类型，第五列为列表属性的名称</p>
+</li>
+<li><p>第 10 行为 PLY 文件头结束标记</p>
+</li>
+</ul>
+<h2 id="数据区"><a href="#数据区" class="headerlink" title="数据区"></a>数据区</h2><h3 id="文本类型"><a href="#文本类型" class="headerlink" title="文本类型"></a>文本类型</h3><p>文本类型的 PLY 文件数据区是由一系列以回车结尾（Windows 中为 “\r\n”，Linux 中为 “\n”，Mac中为 “\r”）的文本行。典型的数据区如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0 0 0</span><br><span class="line">0 0 1</span><br><span class="line">0 1 1</span><br><span class="line">0 1 0</span><br><span class="line">1 0 0</span><br><span class="line">1 0 1</span><br><span class="line">1 1 1</span><br><span class="line">1 1 0</span><br><span class="line">4 0 1 2 3</span><br><span class="line">4 7 6 5 4</span><br><span class="line">4 0 4 5 1</span><br><span class="line">4 1 5 6 2</span><br><span class="line">4 2 6 7 3</span><br><span class="line">4 3 7 4 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第 1- 8 行为第一种数据元素，第 9 - 14 行为第二种数据元素。每一个数据列的所代表的含义，在文件头中的已说明。</li>
+</ul>
+<h3 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h3><p>在二进制版本中，所有数据按照文件头中的顺序依次存储，必须严格按照数据类型所占字节的大小读写。</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">字节</th>
+<th align="center">类型</th>
+<th align="center">字节</th>
+<th align="center">类型</th>
+<th align="center">字节</th>
+<th align="center">类型</th>
+<th align="center">字节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">char</td>
+<td align="center">1</td>
+<td align="center">uchar</td>
+<td align="center">1</td>
+<td align="center">int8</td>
+<td align="center">1</td>
+<td align="center">uint8</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">2</td>
+<td align="center">ushort</td>
+<td align="center">2</td>
+<td align="center">int16</td>
+<td align="center">2</td>
+<td align="center">uint16</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">uint</td>
+<td align="center">4</td>
+<td align="center">int32</td>
+<td align="center">4</td>
+<td align="center">uint32</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">8</td>
+<td align="center">ulong</td>
+<td align="center">8</td>
+<td align="center">int64</td>
+<td align="center">8</td>
+<td align="center">uint64</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">4</td>
+<td align="center">double</td>
+<td align="center">8</td>
+<td align="center">float32</td>
+<td align="center">4</td>
+<td align="center">float64</td>
+<td align="center">8</td>
+</tr>
+</tbody></table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>PLY 文件格式： <a href="https://en.wikipedia.org/wiki/PLY_(file_format)">https://en.wikipedia.org/wiki/PLY_(file_format)</a></li>
+<li>Greg Turk：<a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SARscape对Sentinel-1数据进行D-InSAR处理</title>
+    <url>/2023/45730.html/</url>
+    <content><![CDATA[<p>本文详细介绍了利用SARscape软件对Sentinel-1数据进行D-InSAR处理的全流程。适合收藏！</p>
+<span id="more"></span>
+
+<h1 id="软件下载与安装"><a href="#软件下载与安装" class="headerlink" title="软件下载与安装"></a>软件下载与安装</h1><ul>
+<li>下载地址：<a href="https://abandonssr.github.io/2022/48142.html/">https://abandonssr.github.io/2022/48142.html/</a></li>
+<li>安装说明：先安装“ENVI 5.6”，再安装“SARscape 5.6.2”。</li>
+</ul>
+<h1 id="Sentinel-1数据下载"><a href="#Sentinel-1数据下载" class="headerlink" title="Sentinel-1数据下载"></a>Sentinel-1数据下载</h1><h2 id="下载SAR数据"><a href="#下载SAR数据" class="headerlink" title="下载SAR数据"></a>下载SAR数据</h2><ol>
+<li><p>打开网址（<a href="https://scihub.copernicus.eu/%EF%BC%89%EF%BC%8C%E6%89%BE%E5%88%B0%E5%B9%B6%E6%89%93%E5%BC%80%E2%80%9COpen">https://scihub.copernicus.eu/），找到并打开“Open</a> Hub”</p>
+<img src="https://s2.loli.net/2023/07/01/CtBghHRvqpeiTsO.png" alt="D-InSAR处理Sentinel-1数据_001.png" style="zoom:60%;" />
+</li>
+<li><p>鼠标右键框选研究区域，接着在筛选页面中，勾选“Sentinel-1”、选择Satellite Platform为“S1A”和Product Type为“SLC”，最后点击搜索按钮。注：需要登录账号。</p>
+<img src="https://s2.loli.net/2023/07/01/MdVntwS3T7cE5oA.png" alt="D-InSAR处理Sentinel-1数据_002.png" style="zoom:33%;" />
+</li>
+<li><p>选择合适的SAR数据，并下载</p>
+<img src="https://s2.loli.net/2023/07/01/mAzOEQPWLgdBq4i.png" alt="D-InSAR处理Sentinel-1数据_003.png" style="zoom:33%;" /></li>
+</ol>
+<h2 id="下载精密轨道数据"><a href="#下载精密轨道数据" class="headerlink" title="下载精密轨道数据"></a>下载精密轨道数据</h2><ol>
+<li><p>打开网址（<a href="https://scihub.copernicus.eu/%EF%BC%89%EF%BC%8C%E6%89%BE%E5%88%B0%E5%B9%B6%E6%89%93%E5%BC%80%E2%80%9CPOD">https://scihub.copernicus.eu/），找到并打开“POD</a> Hub”</p>
+<img src="https://s2.loli.net/2023/07/01/8yILJm4YZMkSobc.png" alt="D-InSAR处理Sentinel-1数据_004.png" style="zoom: 60%;" />
+</li>
+<li><p>在筛选页面中，勾选“Sentinel-1”、选择Satellite Platform为“S1A”和Product Type为“AUX POEORB”，最后点击搜索按钮。注：需要登录账号，账号名和密码均为“gnssguest”</p>
+<img src="https://s2.loli.net/2023/07/01/m6ACLEgJzWydDu4.png" alt="D-InSAR处理Sentinel-1数据_005.png" style="zoom:33%;" />
+
+<p>找到需要的轨道数据，并下载。注意：精密轨道数据在成像后的20天公布，例如下载2023年1月9日的SAR数据，则该日的精密轨道数据发布时间为2023年1月29日</p>
+<img src="https://s2.loli.net/2023/07/01/XIpyLfdxtB1n5sV.png" alt="D-InSAR处理Sentinel-1数据_006.png" style="zoom:33%;" /></li>
+</ol>
+<h1 id="SRTM-DEM-30米-下载"><a href="#SRTM-DEM-30米-下载" class="headerlink" title="SRTM DEM(30米)下载"></a>SRTM DEM(30米)下载</h1><ol>
+<li><p>打开网址（<a href="http://dwtkns.com/srtm30m/%EF%BC%89%EF%BC%8C%E6%89%BE%E5%88%B0%E5%B9%B6%E7%82%B9%E5%87%BB%E7%A0%94%E7%A9%B6%E5%8C%BA%E5%9F%9F">http://dwtkns.com/srtm30m/），找到并点击研究区域</a></p>
+<img src="https://s2.loli.net/2023/07/01/8pnhzIkCvAP34Jt.png" alt="D-InSAR处理Sentinel-1数据_007.png" style="zoom:33%;" />
+</li>
+<li><p>点击“Download DEM”，即可下载。注意：需要登录NASA的EarthData账号</p>
+</li>
+</ol>
+<h1 id="DEM拼接与格式转换"><a href="#DEM拼接与格式转换" class="headerlink" title="DEM拼接与格式转换"></a>DEM拼接与格式转换</h1><ol>
+<li><p>菜单栏选择“File\open as\Digital Elevation\SRTM DEM”，打开位于研究区的所有DEM文件</p>
+<img src="https://s2.loli.net/2023/07/01/NuvMtI8Y4QGomPy.png" alt="D-InSAR处理Sentinel-1数据_008.png" style="zoom:67%;" />
+
+<img src="https://s2.loli.net/2023/07/01/E18hTP2MWI4Ujb5.png" alt="D-InSAR处理Sentinel-1数据_009.png" style="zoom: 33%;" />
+</li>
+<li><p>合并DEM数据。在右侧的Toolbox中，选择“Mosaicking\Seamless Mosaic”。首先添加DEM数据，接着记录(可修改)输出的文件路径(稍后需要用到)，最后点击“Finish”</p>
+<img src="https://s2.loli.net/2023/07/01/sadtjWUNLGXpqC4.png" alt="D-InSAR处理Sentinel-1数据_010.png" style="zoom: 67%;" />
+
+<img src="https://s2.loli.net/2023/07/01/nA38RbsktYTwqom.png" alt="D-InSAR处理Sentinel-1数据_011.png" style="zoom:67%;" />
+
+<img src="https://s2.loli.net/2023/07/01/9TiPH1RwGZJgcYt.png" alt="D-InSAR处理Sentinel-1数据_012.png" style="zoom: 67%;" />
+</li>
+<li><p>转换数据格式。在右侧的Toolbox中，选择“SARscape\Import Data\ENVI Format\Original ENVI”。在“Input Files”选项卡中，选择上一步拼接后的DEM文件；在“Parameters”选项卡中，将“Data Units”设置为“Ellipsoidal DEM”；在“Output Files”选项卡中，修改文件输出路径和后缀。最后，点击“Exec”。</p>
+<img src="https://s2.loli.net/2023/07/01/G7vkcwPr9pT3Sy4.png" alt="D-InSAR处理Sentinel-1数据_013.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/BuPMaJYgn3QbVDk.png" alt="D-InSAR处理Sentinel-1数据_014.png" style="zoom: 80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/ZIXOgBzQFe86dMV.png" alt="D-InSAR处理Sentinel-1数据_015.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/9IgOpHJomKvicuj.png" alt="D-InSAR处理Sentinel-1数据_016.png" style="zoom:80%;" /></li>
+</ol>
+<h1 id="导入Sentinel-1数据"><a href="#导入Sentinel-1数据" class="headerlink" title="导入Sentinel-1数据"></a>导入Sentinel-1数据</h1><ol>
+<li><p>特有参数设置。在右侧的Toolbox中，选择“SARscape\Preferences\Preferences specific。在“Load Preferences”中，选择“Sentinel TOPSAR(IW - EW)”。</p>
+<img src="https://s2.loli.net/2023/07/01/VgMIDYsB37FHzca.png" alt="D-InSAR处理Sentinel-1数据_017.png" style="zoom: 80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/w2Ua9HyDqVsB8Rb.png" alt="D-InSAR处理Sentinel-1数据_018.png" style="zoom:80%;" />
+</li>
+<li><p>通用参数设置。在右侧的Toolbox中，选择“SARscape\Preferences\Preferences common。设置Sentinel-1数据轨道路径。</p>
+<img src="https://s2.loli.net/2023/07/01/42MnQHfcOijpPSd.png" alt="D-InSAR处理Sentinel-1数据_019.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/pl5GDyjmu9edsJ6.png" alt="D-InSAR处理Sentinel-1数据_020.png" style="zoom:80%;" />
+</li>
+<li><p>导入数据。在右侧的Toolbox中，选择“SARscape\Import Data\SAR Spaceborne\Single Sensor\SENTINEL-1”。在“Input Files”选项卡中，选择SAR数据(zip格式)；在“Output Files”选项卡中，记录(可修改)输出的路径。</p>
+<img src="https://s2.loli.net/2023/07/01/jCvdsRMNwyYqArI.png" alt="D-InSAR处理Sentinel-1数据_021.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/UCaF6yVbZDnkcj5.png" alt="D-InSAR处理Sentinel-1数据_022.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/65xGdoAzlfwNKi2.png" alt="D-InSAR处理Sentinel-1数据_023.png" style="zoom:80%;" /></li>
+</ol>
+<h1 id="裁剪Sentinel-1数据"><a href="#裁剪Sentinel-1数据" class="headerlink" title="裁剪Sentinel-1数据"></a>裁剪Sentinel-1数据</h1><ol>
+<li><p>在右侧的“Toolbox”中，选择“General Tools\Sample Selections\Sample Selection SAR Geometry Data”。</p>
+<img src="https://s2.loli.net/2023/07/02/U5obv3GjLVEHzaD.png" alt="D-InSAR处理Sentinel-1数据_024.png" style="zoom:80%;" />
+</li>
+<li><p>在“Input Files”选项卡中，选择在“导入Sentinel-1数据”步骤输出的“***_VV_slc_list”文件。</p>
+<img src="https://s2.loli.net/2023/07/02/YnkS8esmgGOrPIq.png" alt="D-InSAR处理Sentinel-1数据_025.png" style="zoom:80%;" />
+</li>
+<li><p>在“Optional Files”选项卡中，选择在“DEM拼接与格式转换”步骤中输出的“***_dem”文件。</p>
+<img src="https://s2.loli.net/2023/07/02/KdcqpvsL2mUu4Y7.png" alt="D-InSAR处理Sentinel-1数据_026.png" style="zoom:80%;" />
+</li>
+<li><p>在“Parameters”选项卡中，选择为“Cut”参数类型，再进行如下设置：<br>Geographical Region：Ture；<br>East和West：研究区域的东西经度范围；<br>South和North：研究区域的南北纬度范围；<br>Min Vaild Square Dimension：原始值为200，代表如果选定区域内的某个子图尺寸（以像素为单位）小于该值（至少在一个方向上：范围和方位），则的该子图将被丢弃。建议将该值调小。</p>
+<img src="https://s2.loli.net/2023/07/02/THcUXQAMhGbxorm.png" alt="D-InSAR处理Sentinel-1数据_027.png" style="zoom:80%;" />
+</li>
+<li><p>在“Output Files”选项卡中，记录(可修改)输出的路径。</p>
+<img src="https://s2.loli.net/2023/07/02/acHrCVn5k4ysq7P.png" alt="D-InSAR处理Sentinel-1数据_028.png" style="zoom:80%;" />
+</li>
+<li><p>最后点击“Exec”。</p>
+</li>
+</ol>
+<h1 id="基线估算"><a href="#基线估算" class="headerlink" title="基线估算"></a>基线估算</h1><p>在右侧的“Toolbox”中，选择“SARscape\Interferometry\Interferometric Tools\Baseline Estimation”。在“Input Files”选项卡中，分别选择在“裁剪Sentinel-1数据”步骤中裁剪后的“***_slc_list”数据。最后，点击“Exec”，查看基线估算结果。</p>
+<img src="https://s2.loli.net/2023/07/02/srpHxOo8iMqcem6.png" alt="D-InSAR处理Sentinel-1数据_029.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/02/dMpWXGCaJbIhozZ.png" alt="D-InSAR处理Sentinel-1数据_030.png" style="zoom:80%;" />
+
+<h1 id="D-InSAR处理"><a href="#D-InSAR处理" class="headerlink" title="D-InSAR处理"></a>D-InSAR处理</h1><ol>
+<li><p>在右侧的“Toolbox”中，选择“SARscape\Interferometry\DInSAR Displacement Workflow”。</p>
+<img src="https://s2.loli.net/2023/07/02/nOwsPt7kdfaNQvb.png" alt="D-InSAR处理Sentinel-1数据_031.png" style="zoom: 80%;" />
+</li>
+<li><p>Workflow：Input。</p>
+<ul>
+<li>在“Input Files”选项卡中，分别选择第5步裁剪后的“***_slc_list”数据。</li>
+<li>在“DEM”选项卡中，选择第3步输出的“***_dem”数据。</li>
+<li>最后，点击“Next &gt;”。</li>
+</ul>
+<img src="https://s2.loli.net/2023/07/02/PdRuK1UJhFcMHgW.png" alt="D-InSAR处理Sentinel-1数据_032.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/02/JDYj43QbNGyLMUe.png" alt="D-InSAR处理Sentinel-1数据_033.png" style="zoom:80%;" />
+</li>
+<li><p>Workflow：Import Generic SAR Data。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：Interferogram Generation(生成干涉图)。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：Adaptive Filter and Coherence Generation(自适应滤波和一致性生成)。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：Phase Unwrapping(相位解缠)。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：GCP Selection(选择地面控制点)。</p>
+<p>① 点击最右侧的望远镜按钮，弹出“Generate Ground Control Points”窗口。</p>
+<img src="https://s2.loli.net/2023/07/02/usAaEx3KvTynDXJ.png" alt="D-InSAR处理Sentinel-1数据_034.png" style="zoom:80%;" />
+
+<p>② 弹出的窗口已默认加载相关文件路径，点击“Next &gt;”。</p>
+<img src="https://s2.loli.net/2023/07/02/y8us7eHYaWvmbGC.png" alt="D-InSAR处理Sentinel-1数据_035.png" style="zoom:80%;" />
+
+<p>③ 在干涉图边缘位置，选取若干控制点，点击“Finish”。最后点击“Next &gt;”。</p>
+<img src="https://s2.loli.net/2023/07/02/awZtQyKInRl63jo.png" alt="D-InSAR处理Sentinel-1数据_036.png" style="zoom: 50%;" />
+</li>
+<li><p>Workflow：Refinement and Re-flantening(轨道精炼和重去平)。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：Phase to Displacement Conversion and Geocoding(相位转形变和地理编码)。保持默认参数，点击“Next &gt;”。</p>
+</li>
+<li><p>Workflow：Output。记录输出路径，并取消勾选“Delete Temporary Files”。点击“完成”。</p>
+</li>
+</ol>
+<img src="https://s2.loli.net/2023/07/02/2i1u39QvxgZHmsh.png" alt="D-InSAR处理Sentinel-1数据_038.png" style="zoom: 33%;" />
+
+<h1 id="补充1：文件后缀说明"><a href="#补充1：文件后缀说明" class="headerlink" title="补充1：文件后缀说明"></a>补充1：文件后缀说明</h1><table>
+<thead>
+<tr>
+<th align="center">后缀</th>
+<th align="center">中文说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">_slc</td>
+<td align="center">SAR单视复数数据</td>
+</tr>
+<tr>
+<td align="center">_pwr</td>
+<td align="center">SAR强度图</td>
+</tr>
+<tr>
+<td align="center">_dem</td>
+<td align="center">数字高程模型</td>
+</tr>
+<tr>
+<td align="center">_int</td>
+<td align="center">干涉图</td>
+</tr>
+<tr>
+<td align="center">_dint</td>
+<td align="center">去平地效应后的干涉图</td>
+</tr>
+<tr>
+<td align="center">_fint</td>
+<td align="center">滤波后的干涉图</td>
+</tr>
+<tr>
+<td align="center">_cc</td>
+<td align="center">相干性图</td>
+</tr>
+<tr>
+<td align="center">_upha</td>
+<td align="center">解缠后的相位</td>
+</tr>
+<tr>
+<td align="center">_disp</td>
+<td align="center">形变结果制图</td>
+</tr>
+<tr>
+<td align="center">_ALOS</td>
+<td align="center">视线方位角</td>
+</tr>
+<tr>
+<td align="center">_ILOS</td>
+<td align="center">视线入射角</td>
+</tr>
+<tr>
+<td align="center">_resulution</td>
+<td align="center">相位转高程生成的分辨率文件</td>
+</tr>
+<tr>
+<td align="center">_precision</td>
+<td align="center">相位转高程或相位形变得到的精度文件</td>
+</tr>
+</tbody></table>
+<h1 id="补充2：查看导入Sentinel-1数据时是否使用精密轨道数据"><a href="#补充2：查看导入Sentinel-1数据时是否使用精密轨道数据" class="headerlink" title="补充2：查看导入Sentinel-1数据时是否使用精密轨道数据"></a>补充2：查看导入Sentinel-1数据时是否使用精密轨道数据</h1><ol>
+<li><p>在导入数据时输出的文件夹中，找到“***_slc_list.sml”文件，用记事本打开。</p>
+<img src="https://s2.loli.net/2023/07/02/cAHS4IpCi3bYw82.png" alt="D-InSAR处理Sentinel-1数据_051.png" style="zoom: 67%;" />
+</li>
+<li><p>搜索“ORBIT_FILE_NAME”，若存在这一行，即说明数据导入的时候用到了精密轨道数据。</p>
+<img src="https://s2.loli.net/2023/07/02/CLft38AwBcSR9yH.png" alt="D-InSAR处理Sentinel-1数据_052.png" style="zoom: 43%;" /></li>
+</ol>
+<h1 id="补充3：设置Sentinel-1数据轨道文件路径"><a href="#补充3：设置Sentinel-1数据轨道文件路径" class="headerlink" title="补充3：设置Sentinel-1数据轨道文件路径"></a>补充3：设置Sentinel-1数据轨道文件路径</h1><ol>
+<li><p>在右侧的Toolbox中，选择“SARscape\Preferences\Preferences common。设置Sentinel-1数据轨道路径。</p>
+<img src="https://s2.loli.net/2023/07/01/42MnQHfcOijpPSd.png" alt="D-InSAR处理Sentinel-1数据_019.png" style="zoom:80%;" />
+
+<img src="https://s2.loli.net/2023/07/01/pl5GDyjmu9edsJ6.png" alt="D-InSAR处理Sentinel-1数据_020.png" style="zoom:80%;" />
+</li>
+<li><p>在该路径下新建名为“AUX_POEORB”的文件夹，将下载好的精密轨道文件直接放在该路径下。</p>
+<img src="https://s2.loli.net/2023/07/02/C9RvKLiDet6F7ku.png" alt="D-InSAR处理Sentinel-1数据_053.png" style="zoom: 67%;" />
+
+<img src="https://s2.loli.net/2023/07/02/JygwlSrtb35xBAf.png" alt="D-InSAR处理Sentinel-1数据_054.png" style="zoom:67%;" /></li>
+</ol>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WPF的坑：NuGet引入源代码包导致编译失败</title>
+    <url>/2023/30480.html/</url>
+    <content><![CDATA[<p>当目标项目为WPF项目时，使用NuGet导入源代码包出现的问题。</p>
+<span id="more"></span>
+
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>某天，为了更方便管理引用的函数库，使用NuGet包管理器导入『GDAL』库(包含4个dll文件、1个cs文件和1个vb文件)。在程序的主函数中，写入如下代码配置GDAL库，之后就可以正常使用GDAL库。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">GdalConfiguration.ConfigureGdal();</span><br><span class="line">GdalConfiguration.ConfigureOgr();</span><br></pre></td></tr></table></figure>
+
+<p>添加以下命令空间。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
+
+<p>测试GDAL库的代码如下。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="控制台项目"><a href="#控制台项目" class="headerlink" title="控制台项目"></a>控制台项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/snkLP4emQ9oRupA.png" alt="2023-02-21_101815.png"></p>
+<h2 id="WinForm项目"><a href="#WinForm项目" class="headerlink" title="WinForm项目"></a>WinForm项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/R3OQycd4hSJuUB1.png" alt="2023-02-21_105150.png"></p>
+<h2 id="WPF项目"><a href="#WPF项目" class="headerlink" title="WPF项目"></a>WPF项目</h2><p>编译生成并运行，可以看到生成的项目并不是原始的项目，新的临时项目命名特征可总结为『{项目名}+{随机字符}+wpftmp.csproj』。同时，会出现找不到『GdalConfiguration』的错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/LDrzh8cOSG1kqom.png" alt="2023-02-21_105507.png"></p>
+<h1 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h1><p>根据<a href="https://blog.walterlv.com/post/issues-of-nuget-package-import-for-wpf-projects.html">吕毅在其博客文章</a>中的分析，可以知道这是WPF项目在编译过程中产生的问题。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>继续使用WPF项目的前提下，则放弃使用NuGet包管理器自动导入GDAL库，改为手动导入。</li>
+<li>继续使用NuGet包管理器的前提下，则放弃使用WPF项目，改为使用WinForm项目。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows_10_11下载免费的 HEVC_Video_Extension</title>
+    <url>/2023/23496.html/</url>
+    <content><![CDATA[<p>HEVC（High Efficiency Video Coding）是一种视频压缩标准，能够以较小的文件大小进行高质量的视频播放。在某些情况下，用户可以从 Microsoft Store 下载 HEVC 视频扩展。但是，从 Microsoft Store 下载文件可能有点棘手。幸运的是，Adguard 是一个第三方 Web 服务和在线链接生成器，可以轻松地从 Microsoft Store 下载 appx、appxbundle 和 msixbundle 文件。在本文中，我们将指导你使用 Adguard 下载 HEVC 视频扩展的。</p>
+<span id="more"></span>
+
+<h1 id="解析链接"><a href="#解析链接" class="headerlink" title="解析链接"></a>解析链接</h1><ol>
+<li>打开 Adguard 网站。链接：<a href="https://store.rg-adguard.net./">https://store.rg-adguard.net。</a></li>
+<li>将HEVC视频扩展应用URL复制到文本框中。链接：<a href="https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq">https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq</a></li>
+<li>点击右侧的对号<br><img src="https://s2.loli.net/2023/06/21/OesYIrWaS9LPkqH.png" alt="下载HEVC视频扩展_01.png"></li>
+</ol>
+<h1 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h1><p>点击后缀为 .appxbundle 后缀的文件链接下载文件<br><img src="https://s2.loli.net/2023/06/21/wh6ZsPeaQviAKNV.png" alt="下载HEVC视频扩展_02.png"></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>双击下载的安装包，点击安装，稍等片刻</p>
+<p><img src="https://s2.loli.net/2023/06/21/KSeLUTNAvYZQ6Fx.png" alt="下载HEVC视频扩展_03.png"></p>
+]]></content>
+      <categories>
+        <category>系统维护</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows下制作便携版Python环境</title>
+    <url>/2023/10196.html/</url>
+    <content><![CDATA[<p>从Python 3.5开始，官方提供有 Windows embeddable package，这是为了让你可以将Pyhton内嵌在自己的应用程序而特别设计的最精简版本 Python 执行环境。本文利用该版本制作一个便携版的Python环境。</p>
+<span id="more"></span>
+
+<h1 id="下载Python"><a href="#下载Python" class="headerlink" title="下载Python"></a>下载Python</h1><ol>
+<li><p>以 3.10.11 版本为例，下载 <a href="https://www.python.org/ftp/python/3.10.11/python-3.10.11-embed-amd64.zip">Windows embeddable package (64-bit)</a> 。</p>
+</li>
+<li><p>解压，运行Python</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">./python</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2023/07/26/F49z7nEtiAk6VmK.png" alt="制作便携版Python_01.png"></p>
+</li>
+</ol>
+<h1 id="安装pip工具"><a href="#安装pip工具" class="headerlink" title="安装pip工具"></a>安装pip工具</h1><ol>
+<li><p>获取 get-pip.py 文件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">curl</span> <span class="literal">-o</span> <span class="string">&quot;get-pip.py&quot;</span> <span class="string">&quot;https://bootstrap.pypa.io/get-pip.py&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行 get-pip.py 文件</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">./python <span class="built_in">get-pip</span>.py</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://s2.loli.net/2023/07/26/8sywhpovL4cGqf9.png" alt="制作便携版Python_02.png"></p>
+<h1 id="启用自定义配置"><a href="#启用自定义配置" class="headerlink" title="启用自定义配置"></a>启用自定义配置</h1><p>使用记事本打开 python310._pth 文件，取消 import site 前面的注释符。</p>
+<p><img src="https://s2.loli.net/2023/07/26/RKZQwjpJaPTXDqb.png" alt="制作便携版Python_03.png"></p>
+<h1 id="运行pip工具"><a href="#运行pip工具" class="headerlink" title="运行pip工具"></a>运行pip工具</h1><p>查看已安装的全部包</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\Scripts\pip3 list</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2023/07/26/jBtU21sAH8a9GIi.png" alt="制作便携版Python_04.png"></p>
+<p>pip安装第三方包</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\Scripts\pip3 install numpy</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2023/07/26/9b62aMCWD7vNgKt.png" alt="制作便携版Python_05.png"></p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>利用 Github Pages 搭建个人博客</title>
+    <url>/2022/64270.html/</url>
+    <content><![CDATA[<p>现如今，想搭建一个博客网站，当然不用自己从头开始写 html\css\javascript，因为有许多开源的代码可以供我们选择。Hexo 就是一个专门用于博客类网站的开源项目，使用 Node.js 语言开发，网上大多数的个人博客都是使用这个框架搭建的。同时，利用 Github 提供的 Pages 服务，可以免费搭建博客网站。</p>
+<span id="more"></span>
+
+<h1 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h1><ul>
+<li><p>官网：<a href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
+</li>
+<li><p>过程：略</p>
+</li>
+</ul>
+<h1 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h1><ul>
+<li>官网：<a href="https://git-scm.com/">https://git-scm.com/</a></li>
+<li>过程：略</li>
+</ul>
+<h2 id="配置-Git-参数"><a href="#配置-Git-参数" class="headerlink" title="配置 Git 参数"></a>配置 Git 参数</h2><ol>
+<li><p>打开”Git Bash”，配置用户名和邮箱。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中 username 和 username@XXX.com 是你注册 GitHub 的用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;username&quot;</span><br><span class="line">git config --global user.email &quot;username@XXX.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成并查看 SSH Keys。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成 SSH Keys</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;username@XXX.com&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 SSH Keys</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">cat</span>后面的路径是生成的公钥文件路径，直接复制过来就可以</span></span><br><span class="line">cat /c/Users/XXX/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 SSH Keys 内容。</p>
+</li>
+<li><p>打开 Github，点击右上角的头像，点击”Settings”。</p>
+</li>
+<li><p>点击”SSH and GPG keys”，然后点击”New SSH keys”。</p>
+</li>
+<li><p>Title 任意名称都可以，Key填写上一步复制的公钥内容，最后点击”Add SSH key”。</p>
+</li>
+<li><p>测试 Git 是否配置成功。出现”你的用户名”和”successfully”字样，说明配置成功。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下面的命令什么都不用改</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><ul>
+<li>官网：<strong><a href="https://hexo.io/">https://hexo.io/</a></strong></li>
+</ul>
+<h2 id="本地安装-Hexo"><a href="#本地安装-Hexo" class="headerlink" title="本地安装 Hexo"></a>本地安装 Hexo</h2><ol>
+<li><p>新建空文件夹，用来存放 Hexo 文件和博客文章。</p>
+</li>
+<li><p>进入新建的文件夹，右键选择”Git Bash Here”，依次输入以下命令。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 Hexo 框架</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 初始化文件夹</span></span><br><span class="line">hexo init</span><br><span class="line"><span class="comment"># 安装 hexo 依赖包</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看本地博客效果，依次输入以下命令。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理 Hexo</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="comment"># 生成静态网站</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># 启动服务器</span></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开浏览器，输入网址”<a href="http://localhost:4000/">http://localhost:4000/</a>“</p>
+</li>
+</ol>
+<h2 id="更换-Hexo-主题"><a href="#更换-Hexo-主题" class="headerlink" title="更换 Hexo 主题"></a>更换 Hexo 主题</h2><p>Hexo 主题网站</p>
+<ul>
+<li>官网：<a href="https://hexo.io/themes/">https://hexo.io/themes/</a></li>
+<li>Github：<a href="https://github.com/search?q=hexo-theme">https://github.com/search?q=hexo-theme</a></li>
+</ul>
+<p>以安装指定版本的 Next 主题为例：</p>
+<ol>
+<li><p>在博客根目录，右键选择”Git Bash Here”，输入以下命令。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用记事本打开博客根目录下的 “_config.yml”文件 ，找到”theme”标签，将”landscape”改为”next”。</p>
+</li>
+<li><p>查看本地博客效果。</p>
+</li>
+</ol>
+<h1 id="部署到-Github-Pages"><a href="#部署到-Github-Pages" class="headerlink" title="部署到 Github Pages"></a>部署到 Github Pages</h1><h2 id="创建-GitHub-Pages-仓库"><a href="#创建-GitHub-Pages-仓库" class="headerlink" title="创建 GitHub Pages 仓库"></a>创建 GitHub Pages 仓库</h2><p>新建 Github 仓库，按如下格式填写。</p>
+<ul>
+<li><strong>Repository name：</strong>&lt;你的用户名&gt;.github.io。例：AbandonSSR.github.io</li>
+<li><strong>Description：</strong>可为空</li>
+<li><strong>Public：</strong>勾选</li>
+</ul>
+<h2 id="开启Github-Pages"><a href="#开启Github-Pages" class="headerlink" title="开启Github Pages"></a>开启Github Pages</h2><ol>
+<li>进入创建的 Github Pages 仓库，点击”Settings”。</li>
+<li>进入”Page”设置页面，将Source中的分支改为”master”，同时点击”Choose a theme”选择初始主题。</li>
+<li>稍等片刻，在浏览器中输入网址”https:&#x2F;&#x2F;&lt;你的用户名&gt;.github.io&#x2F;“。例：<a href="https://abandonssr.github.io/">https://AbandonSSR.github.io</a></li>
+</ol>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ol>
+<li><p>安装 Hexo 发布插件。在博客根目录下，右键，打开”Git Bash Here”，输入以下命令，安装”hexo-deployer-git”。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用记事本打开博客根目录下的 “_config.yml”文件，拉到文件最后一行，修改为下面的配置（没有的配置项自行添加）。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中 xxxxxx 是前面多次用到的你的GitHub用户名</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xxxxxx/xxxxxx.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">清理 Hexo</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成静态网站</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署到Github</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开浏览器，输入网址”https:&#x2F;&#x2F;你的用户名.github.io”，可以看到和本地部署一模一样的博客出现了。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows和Office原版镜像</title>
+    <url>/2022/39550.html/</url>
+    <content><![CDATA[<p>本文收集了 Windows 7 - 11、Office 2010 - 2021原版镜像，方便系统维护。</p>
+<span id="more"></span>
+
+<h1 id="Windows-镜像"><a href="#Windows-镜像" class="headerlink" title="Windows 镜像"></a>Windows 镜像</h1><ul>
+<li><p>Windows 7 Ultimate With Service Pack 1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X86:</span><br><span class="line">ed2k://|file|cn_windows_7_ultimate_with_sp1_x86_dvd_u_677486.iso|2653276160|7503E4B9B8738DFCB95872445C72AEFB|/</span><br><span class="line">X64:</span><br><span class="line">ed2k://|file|cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso|3420557312|B58548681854236C7939003B583A8078|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 8 Pro VL</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X86:</span><br><span class="line">ed2k://|file|cn_windows_8_pro_vl_x86_dvd_917720.iso|2595137536|E87CEF7B8B4EFB12B0A7397795209301|/</span><br><span class="line">X64:</span><br><span class="line">ed2k://|file|cn_windows_8_pro_vl_x64_dvd_917773.iso|3558014976|7956620A80428F37D4F2989CB5CF3B5A|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 8.1 Pro VL</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X86:</span><br><span class="line">ed2k://|file|cn_windows_8_1_pro_vl_x86_dvd_2972620.iso|3049981952|5B396C3A0BA99617647D9AFE8403AFA5|/</span><br><span class="line">X64:</span><br><span class="line">ed2k://|file|cn_windows_8_1_pro_vl_x64_dvd_2971907.iso|4032598016|1FDA520B3E8880E2FB00B20439E0826E|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 10 22H2 Consumer Editions</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X64:</span><br><span class="line">ed2k://|file|zh-cn_windows_10_consumer_editions_version_22h2_x64_dvd_139de365.iso|6078826496|4EA34F24DB4F1EE695A608B39C369167|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 11 22H2 Consumer Editions</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X64:</span><br><span class="line">ed2k://|file|zh-cn_windows_11_consumer_editions_version_22h2_x64_dvd_59cfe6ee.iso|5517127680|C48C34A0CF65D363B68295BDD5A89252|/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Office-镜像"><a href="#Office-镜像" class="headerlink" title="Office 镜像"></a>Office 镜像</h1><ul>
+<li><p>Office Professional Plus 2010 With SP1 VOL</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X86:</span><br><span class="line">ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_W32_ChnSimp_CORE_MLF_X17-76734.iso|1412091904|79B75EE3F629A1BD925E6C0AEFDECA10|/</span><br><span class="line">X64:</span><br><span class="line">ed2k://|file|SW_DVD5_Office_Professional_Plus_2010w_SP1_64Bit_ChnSimp_CORE_MLF_X17-76742.iso|1612515328|032320121E0EE36D8F0C32EC89CA0AB9|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Office Professional Plus 2013 With SP1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X86:</span><br><span class="line">ed2k://|file|cn_office_professional_plus_2013_with_sp1_x86_dvd_3921919.iso|858245120|EA50FF2DE78488DF2646D66FA791164A|/</span><br><span class="line">X64:</span><br><span class="line">ed2k://|file|cn_office_professional_plus_2013_with_sp1_x64_dvd_3921920.iso|980258816|E18C9CF896D65B2778AA1A44C922C377|/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Office 2016\2019\2021</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请使用 Office Tool Plus 下载。网址：https://otp.landian.vip/zh-cn/</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="PE-下载"><a href="#PE-下载" class="headerlink" title="PE 下载"></a>PE 下载</h1><ul>
+<li>微PE工具箱：<a href="https://www.wepe.com.cn/download.html">https://www.wepe.com.cn/download.html</a></li>
+<li>Edgeless：<a href="https://home.edgeless.top/#download">https://home.edgeless.top/#download</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>系统维护</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vcpkg包管理器快速入门</title>
+    <url>/2023/6250.html/</url>
+    <content><![CDATA[<p>Windows 下开发 C&#x2F;C++ 程序，少不了编译或配置第三方库，如GDAL、CGAL、PCL库等。但这些库编译或配置起来极为复杂，动辄需要花费半天甚至更久的时间。并且 C# 有 Nuget 包管理器、Python 有 PIP 包管理器，而 C&#x2F;C++ 却没有统一的包管理器。为了解决这个问题，微软在几年前推出 vcpkg 包管理器，本文将介绍此包管理器的使用。</p>
+<span id="more"></span>
+
+<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><p>前置条件:</p>
+<ul>
+<li>Windows 7 或更新的版本</li>
+<li>Git</li>
+<li>Visual Studio 2015 Update 3 或更新的版本（<strong>包含英文语言包</strong>）</li>
+</ul>
+<ol>
+<li><p>从 GitHub 上创建项目的副本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/microsoft/vcpkg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推荐使用 Powershell 运行 bootstrap.bat 脚本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\bootstrap<span class="literal">-vcpkg</span>.bat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装需要的库，如：PCL</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg install pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载不需要的库，如：PCL</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg remove pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出已经安装的库</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集成到  Visual Studio 中，(可能需要管理员权限)</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg integrate install</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>所有已安装的库均可使用 <code>#include</code> 包含您需使用的库的头文件且无需额外配置。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pcl/io/pcd_io.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li>vcpkg：<a href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></li>
+<li>Microsoft：<a href="https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md">https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>测绘常用软件安装包</title>
+    <url>/2022/48142.html/</url>
+    <content><![CDATA[<p>本资源来自互联网，随缘更新，部分软件仅供学习使用，不得商用，商用请联系软件开发商！！！</p>
+<span id="more"></span>
+
+<h1 id="分享说明"><a href="#分享说明" class="headerlink" title="分享说明"></a>分享说明</h1><ul>
+<li>仅供学习使用，不得商用，商用请联系软件发行商</li>
+<li>受阿里云盘分享文件类型限制，故采用伪装为 txt 文本的形式进行分享。若文件后缀为“.iso.txt”、“.dll.txt”、“.lic.txt”，请删除“.txt”后缀后使用</li>
+</ul>
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">版本</th>
+<th align="center">链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ArcGIS Desktop</td>
+<td align="center">10.8.2</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/s6DBReukFK7">https://www.aliyundrive.com/s/s6DBReukFK7</a> </br>提取码: 92wr</td>
+</tr>
+<tr>
+<td align="center">ArcGIS Pro</td>
+<td align="center">3.0.2</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/NAzHkNxckDk">https://www.aliyundrive.com/s/NAzHkNxckDk</a> </br>提取码: om31</td>
+</tr>
+<tr>
+<td align="center">CASS</td>
+<td align="center">11.0.0.8</td>
+<td align="center"><a href="https://cloud.189.cn/t/bmINbu6JrArm">https://cloud.189.cn/t/bmINbu6JrArm</a> 访问码：e1an</td>
+</tr>
+<tr>
+<td align="center">CloudCompare</td>
+<td align="center">2.12.4</td>
+<td align="center"><a href="https://cloud.189.cn/t/3ye2YnERzIVz">https://cloud.189.cn/t/3ye2YnERzIVz</a> 访问码：zuq3</td>
+</tr>
+<tr>
+<td align="center">ContextCapture</td>
+<td align="center">23.0.0.1317</td>
+<td align="center"><a href="https://cloud.189.cn/t/ayuU32eUNJR3">https://cloud.189.cn/t/ayuU32eUNJR3</a> 访问码：q7bp</td>
+</tr>
+<tr>
+<td align="center">FME Form</td>
+<td align="center">2023.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/NFRZn2iYn2my">https://cloud.189.cn/t/NFRZn2iYn2my</a> 访问码：br73</td>
+</tr>
+<tr>
+<td align="center">Global Mapper Pro</td>
+<td align="center">24.1.0</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/btWXQWjf55n">https://www.aliyundrive.com/s/btWXQWjf55n</a> </br>提取码: 3u6k</td>
+</tr>
+<tr>
+<td align="center">IDL ENVI</td>
+<td align="center">5.6.0</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/4LauhaLAb8b">https://www.aliyundrive.com/s/4LauhaLAb8b</a> </br>提取码: m2l6</td>
+</tr>
+<tr>
+<td align="center">Matlab</td>
+<td align="center">R2023a</td>
+<td align="center"><a href="https://cloud.189.cn/t/mmURJf6Rbuiq">https://cloud.189.cn/t/mmURJf6Rbuiq</a> 访问码：6abg</td>
+</tr>
+<tr>
+<td align="center">Metashape Pro</td>
+<td align="center">2.0.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/fyamIjjaqYZb">https://cloud.189.cn/t/fyamIjjaqYZb</a> 访问码：2paw</td>
+</tr>
+<tr>
+<td align="center">OriginPro</td>
+<td align="center">2022 SR1</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/uffHnQeEVqk">https://www.aliyundrive.com/s/uffHnQeEVqk</a> </br>提取码: 58xa</td>
+</tr>
+<tr>
+<td align="center">Pix4Dmapper</td>
+<td align="center">4.5.6</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/psDeG8eKkxa">https://www.aliyundrive.com/s/psDeG8eKkxa</a> </br>提取码: h9e8</td>
+</tr>
+<tr>
+<td align="center">Rhino</td>
+<td align="center">7.32</td>
+<td align="center"><a href="https://cloud.189.cn/t/JB3Yj2MVvuae">https://cloud.189.cn/t/JB3Yj2MVvuae</a> 访问码：oj6x</td>
+</tr>
+<tr>
+<td align="center">SARscape</td>
+<td align="center">5.6.2.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/MzU3I3aQNRFr">https://cloud.189.cn/t/MzU3I3aQNRFr</a> 访问码：kx1n</td>
+</tr>
+<tr>
+<td align="center">SPSS</td>
+<td align="center">27.0.1</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/7ppzbhmmE5A">https://www.aliyundrive.com/s/7ppzbhmmE5A</a> </br>提取码: l0o7</td>
+</tr>
+<tr>
+<td align="center">Surfer</td>
+<td align="center">25.1.229</td>
+<td align="center"><a href="https://www.aliyundrive.com/s/QJ4JonoupDm">https://www.aliyundrive.com/s/QJ4JonoupDm</a> </br>提取码: 2n9i</td>
+</tr>
+</tbody></table>
+<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><ul>
+<li>2023.9.11：Rhino 7.31 → Rhino 7.32<br>2023.9.11：ContextCapture 10.20 → ContextCapture 23.0.0.1317<br>2023.9.11：FME Form 2023.0.2 → FME Form 2023.1<br>2023.9.11：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）</li>
+<li>2023.8.25：新增 FME Form 2023.0.2</li>
+<li>2023.7.15：Matlab R2022b → Matlab R2023a<br>2023.7.15：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）<br>2023.7.15：SARscape 5.6.2 → SARscape 5.6.2.1<br>2023.7.15：Metashape Pro 1.8.5 → Metashape Pro 2.0.2<br>2023.7.15：新增 Rhino 7.31</li>
+<li>2023.6.6：更新所有软件安装包的分享链接</li>
+<li>2023.2.21：Surfer 21.1.158 → Surfer 25.1.229<br>2023.2.21：Global Mapper Pro 24.0.0 → Global Mapper Pro 24.1.0<br>2023.2.21：调整软件顺序，按首字母升序排列</li>
+<li>2023.1.13：调整 SARscape 5.6.2 分享链接<br>2023.1.13：新增 SARScape 5.6.2_20220921 补丁包</li>
+<li>2022.10.28：Global Mapper Pro 23.1.0 → Global Mapper Pro 24.0.0<br>2022.10.28：ContextCapture 10.18 → ContextCapture 10.20<br>2022.10.28：新增 SPSS 27.0.1</li>
+<li>2022.10.12：CASS 11.0.0.6 → CASS 11.0.0.8<br>2022.10.12：ArcGIS Pro 3.0.1 → ArcGIS Pro 3.0.2<br>2022.10.12：Surfer 21.1.158 → Surfer 23.3.202<br>2022.10.12：新增 Metashape Pro 1.8.5<br>2022.10.12：新增 Pix4Dmapper 4.5.6<br>2022.10.12：新增 OriginPro 2022 SR1</li>
+<li>2022.9.19：Matlab R2022a → Matlab R2022b</li>
+<li>2022.9.17：ArcGIS Pro 2.8.6 → ArcGIS Pro 3.0.1</li>
+<li>2022.8.9：CASS 10.1.6 → CASS 11.0.0.6<br>2022.8.9：完善 CASS 11.0.0.6 压缩包中的安装说明</li>
+<li>2022.8.6：CloudCompare 2.12.3 → CloudCompare 2.12.4<br>2022.8.6：IDL ENVI 5.3.1 → IDL ENVI 5.6.0<br>2022.8.6：SARscape 5.2.1 → SARscape 5.6.2</li>
+<li>2022.8.4：Global Mapper 22.0.0 → Global Mapper Pro 23.1.0</li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>node.js使用npm-check-updates更新package.json中的依赖项</title>
+    <url>/2023/3114.html/</url>
+    <content><![CDATA[<p>老旧的软件包既会对安全构成威胁，也会对性能产生负面影响，使用最新的软件包可以防止出现漏洞，这意味着定期检查和更新依赖是很重要的。若使用『 npm install [package]@latest』来获得最新版本，当软件包数量较多时，则比较麻烦。本文介绍使用『npm-check-updates』更新软件包。</p>
+<span id="more"></span>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示当前目录中项目中所有新依赖项</span></span><br><span class="line">ncu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">升级项目的pcakage.json文件</span></span><br><span class="line">ncu -u</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新已安装的软件包和package-lock.json</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p><img src="https://s2.loli.net/2023/06/10/IThLO81wHjYy9kD.png" alt="npm-check-updates.png"></p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+</search>

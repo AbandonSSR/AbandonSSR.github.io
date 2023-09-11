@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/large.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/medium.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/small.png">
+  <link rel="mask-icon" href="/images/logo_large.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"abandonssr.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="LAS文件是二进制格式，其标准格式由美国摄影测量与遥感学会（ASPRS）的 LiDAR 专业委员会进行发布，最新的版本为 2019 年 7 月发布的 LAS 1.4 - R15。LAS1.4 版本的文件结构可分为 4 部分，包括公共头文件区、变长记录区、点数据记录区和扩展变长记录区。下面简要介绍LAS文件各部分编码格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAS文件格式">
+<meta property="og:url" content="https://abandonssr.github.io/2022/26024.html/index.html">
+<meta property="og:site_name" content="小张的杂货铺">
+<meta property="og:description" content="LAS文件是二进制格式，其标准格式由美国摄影测量与遥感学会（ASPRS）的 LiDAR 专业委员会进行发布，最新的版本为 2019 年 7 月发布的 LAS 1.4 - R15。LAS1.4 版本的文件结构可分为 4 部分，包括公共头文件区、变长记录区、点数据记录区和扩展变长记录区。下面简要介绍LAS文件各部分编码格式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-20T02:44:52.000Z">
+<meta property="article:modified_time" content="2023-06-06T03:10:22.313Z">
+<meta property="article:author" content="AbandonSSR">
+<meta property="article:tag" content="AbandonSSR的博客">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://abandonssr.github.io/2022/26024.html/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://abandonssr.github.io/2022/26024.html/","path":"2022/26024.html/","title":"LAS文件格式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LAS文件格式 | 小张的杂货铺</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?e73b371a677108767a90262a57b9b7e8"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小张的杂货铺</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">学而时习之，不亦说乎</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E5%A4%B4%E6%96%87%E4%BB%B6%E5%8C%BA"><span class="nav-number">1.</span> <span class="nav-text">公共头文件区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95%E5%8C%BA"><span class="nav-number">2.</span> <span class="nav-text">点数据记录区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AbandonSSR"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">AbandonSSR</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AbandonSSR" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AbandonSSR" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echo2121@qq.com" title="E-Mail → mailto:echo2121@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://abandonssr.github.io/2022/26024.html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="AbandonSSR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小张的杂货铺">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LAS文件格式 | 小张的杂货铺">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LAS文件格式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-20 10:44:52" itemprop="dateCreated datePublished" datetime="2022-06-20T10:44:52+08:00">2022-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-06-06 11:10:22" itemprop="dateModified" datetime="2023-06-06T11:10:22+08:00">2023-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8B%E7%BB%98/" itemprop="url" rel="index"><span itemprop="name">测绘</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>LAS文件是二进制格式，其标准格式由美国摄影测量与遥感学会（ASPRS）的 LiDAR 专业委员会进行发布，最新的版本为 2019 年 7 月发布的 LAS 1.4 - R15。LAS1.4 版本的文件结构可分为 4 部分，包括公共头文件区、变长记录区、点数据记录区和扩展变长记录区。下面简要介绍LAS文件各部分编码格式。</p>
+<span id="more"></span>
+
+<h1 id="公共头文件区"><a href="#公共头文件区" class="headerlink" title="公共头文件区"></a>公共头文件区</h1><p>公共头文件区记载数据点的数量、格式、数据范围、变长记录区数量、点云数据真实坐标的 X、Y、Z方向的比例因子和偏移量等 LAS 文件的基本信息，所有项目需填写数据，若无数据则置零。下表为 LAS 1.0 - 1.4 R15公共头文件区的对比。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">LAS 1.0</th>
+<th align="center">LAS 1.1</th>
+<th align="center">LAS 1.2</th>
+<th align="center">LAS 1.3 R11</th>
+<th align="center">LAS 1.4 R15</th>
+<th align="center">Format</th>
+<th align="center">Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">File  Signature (“LASF”)</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[4]</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Source ID</td>
+<td align="center">保留字节，置零</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Global  Encoding</td>
+<td align="center">保留字节，置零</td>
+<td align="center">保留字节，置零</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 1</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 2</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 3</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Project  ID - GUID Data 4</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char[8]</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Version  Major</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Version  Minor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">System  Identifier</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[32]</td>
+<td align="center">32 bytes</td>
+</tr>
+<tr>
+<td align="center">Generating  Software</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">char[32]</td>
+<td align="center">32 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Creation Day of Year</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">File  Creation Year</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Header  Size</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Offset  to Point Data</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Variable Length Records</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Point  Data Record Format</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Point  Data Record Length</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Legacy  Number of Point Records</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Legacy  Number of Point by Return</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long[5]</td>
+<td align="center">20 bytes</td>
+</tr>
+<tr>
+<td align="center">X Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Y Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Z Scale  Factor</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">X Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Y Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Z Offset</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max X</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min X</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max Y</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min Y</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Max Z</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Min Z</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Start of  Waveform Data Packet Record</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Start  of First Extended   Variable Length Record</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Extended Variable Length Records</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Point Records</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Number  of Points by Return</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">unsigned long long[15]</td>
+<td align="center">120 bytes</td>
+</tr>
+</tbody></table>
+<h1 id="点数据记录区"><a href="#点数据记录区" class="headerlink" title="点数据记录区"></a>点数据记录区</h1><p>点数据记录区位于变长记录区之后，主要用于存储点云数据，包括每个激光点的三维坐标信息、回波强度信息等相关属性，是 LAS 文件的核心。在 LAS 1.4 版本中，有 11 种点数据类型。点数据类型在公共头文件区中已经指定，每个 LAS 文件只有 1 种点数据类型。LAS 1.0 -  1.3 仅包含 0 - 5 共 6 种点数据类型，LAS 1.4 R15 包含 0 - 10 共11 种点数据类型。下表为 0 - 10 点数据类型的对比。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th align="center">Format</th>
+<th align="center">Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Y</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Z</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Intensity</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Return Number</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">3 bits (bits 0-2)</td>
+<td align="center">3 bits</td>
+</tr>
+<tr>
+<td align="center">Return Number</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 0-3)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Number of Returns (Given  Pulse)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">3 bits (bits 3-5)</td>
+<td align="center">3 bits</td>
+</tr>
+<tr>
+<td align="center">Number of Returns (Given  Pulse)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 4-7)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Classification Flags</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">4 bits (bits 0-3)</td>
+<td align="center">4 bits</td>
+</tr>
+<tr>
+<td align="center">Scanner Channel</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">2 bits (bits 4-5)</td>
+<td align="center">2 bits</td>
+</tr>
+<tr>
+<td align="center">Scan Direction Flag</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">1 bit (bit 6)</td>
+<td align="center">1 bit</td>
+</tr>
+<tr>
+<td align="center">Edge of Flight Line</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">1 bit (bit 7)</td>
+<td align="center">1 bit</td>
+</tr>
+<tr>
+<td align="center">Classification</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Scan Angle Rank (-90 to +90) –  Left Side</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">signed char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">User Data</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Scan Angle</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Point Source ID</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">GPS Time</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">double</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Red</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Green</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Blue</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+<tr>
+<td align="center">Wave Packet Descriptor Index</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned char</td>
+<td align="center">1 byte</td>
+</tr>
+<tr>
+<td align="center">Byte Offset to Waveform Data</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned long long</td>
+<td align="center">8 bytes</td>
+</tr>
+<tr>
+<td align="center">Waveform Packet Size in Bytes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">unsigned long</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Return Point Waveform Location</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dx</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dy</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">Parametric dz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td align="center">float</td>
+<td align="center">4 bytes</td>
+</tr>
+<tr>
+<td align="center">NIR</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+<td></td>
+<td>√</td>
+<td align="center">unsigned short</td>
+<td align="center">2 bytes</td>
+</tr>
+</tbody></table>
+<p>下表为 LAS 1.0 - 1.4 R15 可以使用的点数据类型。</p>
+<table>
+<thead>
+<tr>
+<th align="center">版本</th>
+<th align="center">点数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LAS 1.0、1.1、1.2、1.3 R11</td>
+<td align="center">0、1、2、3、4、5</td>
+</tr>
+<tr>
+<td align="center">LAS 1.4 R15</td>
+<td align="center">0、1、2、3、4、5、6、7、8、9、10</td>
+</tr>
+</tbody></table>
+<p>下表为 0 - 10 点数据类型的最小尺寸。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+<th align="center">类型</th>
+<th align="center">最小尺寸</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">20 bytes</td>
+<td align="center">4</td>
+<td align="center">57 bytes</td>
+<td align="center">8</td>
+<td align="center">38 bytes</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">28 bytes</td>
+<td align="center">5</td>
+<td align="center">63 bytes</td>
+<td align="center">9</td>
+<td align="center">59 bytes</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">26 bytes</td>
+<td align="center">6</td>
+<td align="center">30 bytes</td>
+<td align="center">10</td>
+<td align="center">67 bytes</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">34 bytes</td>
+<td align="center">7</td>
+<td align="center">36 bytes</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>美国摄影测量与遥感学会（ASPRS）：<a target="_blank" rel="noopener" href="https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities">https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>AbandonSSR
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://abandonssr.github.io/2022/26024.html/" title="LAS文件格式">https://abandonssr.github.io/2022/26024.html/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/64270.html/" rel="prev" title="利用 Github Pages 搭建个人博客">
+                  <i class="fa fa-angle-left"></i> 利用 Github Pages 搭建个人博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/48142.html/" rel="next" title="测绘常用软件安装包">
+                  测绘常用软件安装包 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">AbandonSSR</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">10k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">51 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
