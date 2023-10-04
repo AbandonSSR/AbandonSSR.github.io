@@ -30,28 +30,6 @@
       </categories>
   </entry>
   <entry>
-    <title>003.对仅含坐标的点云设置环境光遮蔽</title>
-    <url>/2022/25132.html/</url>
-    <content><![CDATA[<p>当点云仅含坐标信息时，导入CloudCompare后无法分辨各类物体，因此需要设置环境光遮蔽以分辨各位物体</p>
-<span id="more"></span>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>打开仅含X、Y、Z坐标的点云<br><img src="https://s2.loli.net/2022/07/24/BEewamIQLiNTogR.png" alt="CloudCompare.003.01.png"></li>
-<li>设置环境光遮蔽，选中点云，点击工具栏中“Ambient Occlusion for mesh or point cloud”(或菜单栏“Plugins&#x2F;PCV”)工具，保持默认参数即可，根据需要可取消勾选“Only northern hemisphere”。<br><img src="https://s2.loli.net/2022/07/24/by4Y6Gd8ISMC2kH.png" alt="CloudCompare.003.02.png"></li>
-</ol>
-<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz</a></p>
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>本文在环境光遮蔽时需要等待一段时间才可以，对此CloudCompare也提供了两种实时显示各部分细节的工具。</p>
-<ul>
-<li>开启<br>点击工具栏中“Eye-dome Lighting OpenGL shader(或Screen Space Ambient Occlusion OpenGL shader)”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;EDL shader(或SSAO shader)”)</li>
-<li>关闭<br>点击工具栏中“Remove Filter”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;Remove Filter)</li>
-</ul>
-<p><img src="https://s2.loli.net/2022/08/01/vyPulT4BLg2iY6m.png" alt="CloudComapre.003.03.png"></p>
-<p><img src="https://s2.loli.net/2022/08/01/go8dFN6lIS4kPsM.png" alt="CloudComapre.003.04.png"></p>
-]]></content>
-      <categories>
-        <category>CloudCompare</category>
-      </categories>
-  </entry>
-  <entry>
     <title>002.对点云建立泊松曲面模型</title>
     <url>/2022/52283.html/</url>
     <content><![CDATA[<p>使用CloudCompare软件对单个物体的点云数据建立泊松曲面模型</p>
@@ -72,6 +50,71 @@
 <li>Output density as SF：建议勾选<br><img src="https://s2.loli.net/2022/07/24/GksdwJNahCbxiMX.png" alt="CloudCompare.002.03.png"></li>
 </ul>
 <h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz</a></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>005.格网法计算土石方量</title>
+    <url>/2022/27758.html/</url>
+    <content><![CDATA[<p>利用格网法对采集的高密度地面点云计算基于某一高程的土石方量</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开地面点云，以某露天矿中心部分点云为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/xHmgRM9fBDNrcYa.png" alt="CloudCompare.005.01.png"></p>
+<ol start="2">
+<li><p>计算土石方量，选中地面点云，点击菜单栏中“Tools&#x2F;Volume&#x2F;Compute 2.5D volume”工具，主要进行以下参数设置，最后点击“Update”按钮。在“Results”中可以找到“Add volume”和“Removed volume”，即为土石方量。</p>
+<ul>
+<li><p>Ground &#x2F; Before</p>
+<ul>
+<li><p>Source：Constant(常数)</p>
+</li>
+<li><p>Default height：任意高程</p>
+</li>
+</ul>
+</li>
+<li><p>Ceil &#x2F; After</p>
+<ul>
+<li>Source：地面点云</li>
+<li>Empty cells：interpolate(插值)&#x2F;leave empty(留空)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+<li><p>Grid</p>
+<ul>
+<li>step：格网尺寸</li>
+<li>projection dir.：选择“Z”</li>
+<li>cell height：average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/R5zPJ8bZdqGVLl9.png" alt="CloudCompare.005.02.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>003.对仅含坐标的点云设置环境光遮蔽</title>
+    <url>/2022/25132.html/</url>
+    <content><![CDATA[<p>当点云仅含坐标信息时，导入CloudCompare后无法分辨各类物体，因此需要设置环境光遮蔽以分辨各位物体</p>
+<span id="more"></span>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开仅含X、Y、Z坐标的点云<br><img src="https://s2.loli.net/2022/07/24/BEewamIQLiNTogR.png" alt="CloudCompare.003.01.png"></li>
+<li>设置环境光遮蔽，选中点云，点击工具栏中“Ambient Occlusion for mesh or point cloud”(或菜单栏“Plugins&#x2F;PCV”)工具，保持默认参数即可，根据需要可取消勾选“Only northern hemisphere”。<br><img src="https://s2.loli.net/2022/07/24/by4Y6Gd8ISMC2kH.png" alt="CloudCompare.003.02.png"></li>
+</ol>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/dragon/dragon_recon.tar.gz</a></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>本文在环境光遮蔽时需要等待一段时间才可以，对此CloudCompare也提供了两种实时显示各部分细节的工具。</p>
+<ul>
+<li>开启<br>点击工具栏中“Eye-dome Lighting OpenGL shader(或Screen Space Ambient Occlusion OpenGL shader)”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;EDL shader(或SSAO shader)”)</li>
+<li>关闭<br>点击工具栏中“Remove Filter”(或菜单栏中“Display&#x2F;Shaders &amp; Filters&#x2F;Remove Filter)</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/08/01/vyPulT4BLg2iY6m.png" alt="CloudComapre.003.03.png"></p>
+<p><img src="https://s2.loli.net/2022/08/01/go8dFN6lIS4kPsM.png" alt="CloudComapre.003.04.png"></p>
 ]]></content>
       <categories>
         <category>CloudCompare</category>
@@ -147,43 +190,50 @@
       </categories>
   </entry>
   <entry>
-    <title>005.格网法计算土石方量</title>
-    <url>/2022/27758.html/</url>
-    <content><![CDATA[<p>利用格网法对采集的高密度地面点云计算基于某一高程的土石方量</p>
+    <title>007.利用地面点云生成等高线</title>
+    <url>/2022/31015.html/</url>
+    <content><![CDATA[<p>通过使用机载或地面LiDAR获取山区高密度点云数据，采用格网法生成等高线</p>
 <span id="more"></span>
 
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>打开地面点云，以某露天矿中心部分点云为例</li>
+<li>打开点云数据。以某地区露天采煤矿点云数据为例</li>
 </ol>
-<p><img src="https://s2.loli.net/2022/07/29/xHmgRM9fBDNrcYa.png" alt="CloudCompare.005.01.png"></p>
+<p><img src="https://s2.loli.net/2022/08/02/FjL6He27Xxw8UoO.png" alt="CloudCompare.007.01.png"></p>
 <ol start="2">
-<li><p>计算土石方量，选中地面点云，点击菜单栏中“Tools&#x2F;Volume&#x2F;Compute 2.5D volume”工具，主要进行以下参数设置，最后点击“Update”按钮。在“Results”中可以找到“Add volume”和“Removed volume”，即为土石方量。</p>
-<ul>
-<li><p>Ground &#x2F; Before</p>
-<ul>
-<li><p>Source：Constant(常数)</p>
-</li>
-<li><p>Default height：任意高程</p>
-</li>
-</ul>
-</li>
-<li><p>Ceil &#x2F; After</p>
-<ul>
-<li>Source：地面点云</li>
-<li>Empty cells：interpolate(插值)&#x2F;leave empty(留空)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
-</ul>
-</li>
+<li>选中点云，点击菜单栏中“Tools&#x2F;Projection&#x2F;Rasterize”(或工具栏中“Convert a cloud to 2D raster”)工具，主要进行以下参数设置。最后点击“Update grid”。<ul>
 <li><p>Grid</p>
 <ul>
-<li>step：格网尺寸</li>
-<li>projection dir.：选择“Z”</li>
-<li>cell height：average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+<li>step：格网尺寸，根据需要可修改</li>
+<li>active layer：选择Height grid values</li>
+</ul>
+</li>
+<li><p>Projection</p>
+<ul>
+<li>direction：投影方向，默认为Z轴</li>
+<li>cell height：单元格高度，可选择minimum(最小值)&#x2F;average(平均值)&#x2F;maximum(最大值)</li>
+</ul>
+</li>
+<li><p>Empyt cells</p>
+<ul>
+<li>Fill with：空白单元格填充方式，可选择leave empty(留空)&#x2F;interpolate(插值)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
-<p><img src="https://s2.loli.net/2022/07/29/R5zPJ8bZdqGVLl9.png" alt="CloudCompare.005.02.png"></p>
+<p><img src="https://s2.loli.net/2022/08/02/iVskNodJp735xRM.png" alt="CloudCompare.007.02.png"></p>
+<ol start="3">
+<li>在左下侧处，切换到“Contour plot”选项卡，进行以下参数设置。点击“Generate”生成等高线，可在右侧视图中放大预览，最后点击“Export”导出到软件中。<ul>
+<li>Start value：起始高程</li>
+<li>step：等高距</li>
+<li>Min. vertex count：每条等高线最少由多少个点连接</li>
+<li>Line width：线宽</li>
+<li>color width：等高线是否有颜色</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/08/02/LqwgSRia1O7TkyW.png" alt="CloudCompare.007.03.png"></p>
+<p><img src="https://s2.loli.net/2022/08/02/6YwKofFU8OlzQib.png" alt="CloudCompare.007.04.png"></p>
 ]]></content>
       <categories>
         <category>CloudCompare</category>
@@ -235,56 +285,6 @@
 <li>选中点云，点击菜单栏中“Edit&#x2F;Mesh&#x2F;Delaunay 2.5D”(XY plane&#x2F;best fitting plane指投影到XOY平面或最佳拟合平面)，设置“Max edge length(三角网最大边长度)”(注：“0”代表不限制)。</li>
 </ol>
 <p><img src="https://s2.loli.net/2022/08/04/WuI4aFgSMBY9VpR.png" alt="CloudCompare.008.03.png"></p>
-]]></content>
-      <categories>
-        <category>CloudCompare</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>007.利用地面点云生成等高线</title>
-    <url>/2022/31015.html/</url>
-    <content><![CDATA[<p>通过使用机载或地面LiDAR获取山区高密度点云数据，采用格网法生成等高线</p>
-<span id="more"></span>
-
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>打开点云数据。以某地区露天采煤矿点云数据为例</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/08/02/FjL6He27Xxw8UoO.png" alt="CloudCompare.007.01.png"></p>
-<ol start="2">
-<li>选中点云，点击菜单栏中“Tools&#x2F;Projection&#x2F;Rasterize”(或工具栏中“Convert a cloud to 2D raster”)工具，主要进行以下参数设置。最后点击“Update grid”。<ul>
-<li><p>Grid</p>
-<ul>
-<li>step：格网尺寸，根据需要可修改</li>
-<li>active layer：选择Height grid values</li>
-</ul>
-</li>
-<li><p>Projection</p>
-<ul>
-<li>direction：投影方向，默认为Z轴</li>
-<li>cell height：单元格高度，可选择minimum(最小值)&#x2F;average(平均值)&#x2F;maximum(最大值)</li>
-</ul>
-</li>
-<li><p>Empyt cells</p>
-<ul>
-<li>Fill with：空白单元格填充方式，可选择leave empty(留空)&#x2F;interpolate(插值)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/08/02/iVskNodJp735xRM.png" alt="CloudCompare.007.02.png"></p>
-<ol start="3">
-<li>在左下侧处，切换到“Contour plot”选项卡，进行以下参数设置。点击“Generate”生成等高线，可在右侧视图中放大预览，最后点击“Export”导出到软件中。<ul>
-<li>Start value：起始高程</li>
-<li>step：等高距</li>
-<li>Min. vertex count：每条等高线最少由多少个点连接</li>
-<li>Line width：线宽</li>
-<li>color width：等高线是否有颜色</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/08/02/LqwgSRia1O7TkyW.png" alt="CloudCompare.007.03.png"></p>
-<p><img src="https://s2.loli.net/2022/08/02/6YwKofFU8OlzQib.png" alt="CloudCompare.007.04.png"></p>
 ]]></content>
       <categories>
         <category>CloudCompare</category>
@@ -387,6 +387,32 @@
       </categories>
   </entry>
   <entry>
+    <title>GDAL：C#开发环境设置</title>
+    <url>/2023/5137.html/</url>
+    <content><![CDATA[<p>本文简要介绍C#开发环境下，GDAL库的配置。</p>
+<span id="more"></span>
+
+<h1 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h1><ol>
+<li><p>使用NuGet包管理器，安装『GDAL』和『GDAL.Native』</p>
+</li>
+<li><p>在程序主函数中，写入如下代码配置GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    GdalConfiguration.ConfigureGdal();</span><br><span class="line">    GdalConfiguration.ConfigureOgr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下命令空间</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><ul>
+<li>使用NuGet包管理器导入GDAL库时，请使用控制台或WinForm项目，不要使用WPF项目，具体原因请查看「<a href="https://abandonssr.github.io/2023/30480.html/">WPF的坑：NuGet引入源代码包导致编译失败</a>」文章。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Git常用命令</title>
     <url>/2022/7065.html/</url>
     <content><![CDATA[<p>Git是一个免费的、开源的分布式版本控制系统，本文总结了一些Git常用命令，方便初学者查看命令</p>
@@ -450,32 +476,6 @@
 ]]></content>
       <categories>
         <category>开发工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>GDAL：C#开发环境设置</title>
-    <url>/2023/5137.html/</url>
-    <content><![CDATA[<p>本文简要介绍C#开发环境下，GDAL库的配置。</p>
-<span id="more"></span>
-
-<h1 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h1><ol>
-<li><p>使用NuGet包管理器，安装『GDAL』和『GDAL.Native』</p>
-</li>
-<li><p>在程序主函数中，写入如下代码配置GDAL库</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    GdalConfiguration.ConfigureGdal();</span><br><span class="line">    GdalConfiguration.ConfigureOgr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加以下命令空间</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试GDAL库</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><ul>
-<li>使用NuGet包管理器导入GDAL库时，请使用控制台或WinForm项目，不要使用WPF项目，具体原因请查看「<a href="https://abandonssr.github.io/2023/30480.html/">WPF的坑：NuGet引入源代码包导致编译失败</a>」文章。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>测绘</category>
       </categories>
   </entry>
   <entry>
@@ -1602,37 +1602,6 @@
       </categories>
   </entry>
   <entry>
-    <title>WPF的坑：NuGet引入源代码包导致编译失败</title>
-    <url>/2023/30480.html/</url>
-    <content><![CDATA[<p>当目标项目为WPF项目时，使用NuGet导入源代码包出现的问题。</p>
-<span id="more"></span>
-
-<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>某天，为了更方便管理引用的函数库，使用NuGet包管理器导入『GDAL』库(包含4个dll文件、1个cs文件和1个vb文件)。在程序的主函数中，写入如下代码配置GDAL库，之后就可以正常使用GDAL库。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">GdalConfiguration.ConfigureGdal();</span><br><span class="line">GdalConfiguration.ConfigureOgr();</span><br></pre></td></tr></table></figure>
-
-<p>添加以下命令空间。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
-
-<p>测试GDAL库的代码如下。</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="控制台项目"><a href="#控制台项目" class="headerlink" title="控制台项目"></a>控制台项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
-<p><img src="https://s2.loli.net/2023/02/21/snkLP4emQ9oRupA.png" alt="2023-02-21_101815.png"></p>
-<h2 id="WinForm项目"><a href="#WinForm项目" class="headerlink" title="WinForm项目"></a>WinForm项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
-<p><img src="https://s2.loli.net/2023/02/21/R3OQycd4hSJuUB1.png" alt="2023-02-21_105150.png"></p>
-<h2 id="WPF项目"><a href="#WPF项目" class="headerlink" title="WPF项目"></a>WPF项目</h2><p>编译生成并运行，可以看到生成的项目并不是原始的项目，新的临时项目命名特征可总结为『{项目名}+{随机字符}+wpftmp.csproj』。同时，会出现找不到『GdalConfiguration』的错误。</p>
-<p><img src="https://s2.loli.net/2023/02/21/LDrzh8cOSG1kqom.png" alt="2023-02-21_105507.png"></p>
-<h1 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h1><p>根据<a href="https://blog.walterlv.com/post/issues-of-nuget-package-import-for-wpf-projects.html">吕毅在其博客文章</a>中的分析，可以知道这是WPF项目在编译过程中产生的问题。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>继续使用WPF项目的前提下，则放弃使用NuGet包管理器自动导入GDAL库，改为手动导入。</li>
-<li>继续使用NuGet包管理器的前提下，则放弃使用WPF项目，改为使用WinForm项目。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>SARscape对Sentinel-1数据进行D-InSAR处理</title>
     <url>/2023/45730.html/</url>
     <content><![CDATA[<p>本文详细介绍了利用SARscape软件对Sentinel-1数据进行D-InSAR处理的全流程。适合收藏！</p>
@@ -1858,6 +1827,56 @@
       </categories>
   </entry>
   <entry>
+    <title>WPF的坑：NuGet引入源代码包导致编译失败</title>
+    <url>/2023/30480.html/</url>
+    <content><![CDATA[<p>当目标项目为WPF项目时，使用NuGet导入源代码包出现的问题。</p>
+<span id="more"></span>
+
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>某天，为了更方便管理引用的函数库，使用NuGet包管理器导入『GDAL』库(包含4个dll文件、1个cs文件和1个vb文件)。在程序的主函数中，写入如下代码配置GDAL库，之后就可以正常使用GDAL库。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">GdalConfiguration.ConfigureGdal();</span><br><span class="line">GdalConfiguration.ConfigureOgr();</span><br></pre></td></tr></table></figure>
+
+<p>添加以下命令空间。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
+
+<p>测试GDAL库的代码如下。</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="控制台项目"><a href="#控制台项目" class="headerlink" title="控制台项目"></a>控制台项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/snkLP4emQ9oRupA.png" alt="2023-02-21_101815.png"></p>
+<h2 id="WinForm项目"><a href="#WinForm项目" class="headerlink" title="WinForm项目"></a>WinForm项目</h2><p>编译生成并运行，可以看到没有任何错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/R3OQycd4hSJuUB1.png" alt="2023-02-21_105150.png"></p>
+<h2 id="WPF项目"><a href="#WPF项目" class="headerlink" title="WPF项目"></a>WPF项目</h2><p>编译生成并运行，可以看到生成的项目并不是原始的项目，新的临时项目命名特征可总结为『{项目名}+{随机字符}+wpftmp.csproj』。同时，会出现找不到『GdalConfiguration』的错误。</p>
+<p><img src="https://s2.loli.net/2023/02/21/LDrzh8cOSG1kqom.png" alt="2023-02-21_105507.png"></p>
+<h1 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h1><p>根据<a href="https://blog.walterlv.com/post/issues-of-nuget-package-import-for-wpf-projects.html">吕毅在其博客文章</a>中的分析，可以知道这是WPF项目在编译过程中产生的问题。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>继续使用WPF项目的前提下，则放弃使用NuGet包管理器自动导入GDAL库，改为手动导入。</li>
+<li>继续使用NuGet包管理器的前提下，则放弃使用WPF项目，改为使用WinForm项目。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows_10_11下载免费的 HEVC_Video_Extension</title>
+    <url>/2023/23496.html/</url>
+    <content><![CDATA[<p>HEVC（High Efficiency Video Coding）是一种视频压缩标准，能够以较小的文件大小进行高质量的视频播放。在某些情况下，用户可以从 Microsoft Store 下载 HEVC 视频扩展。但是，从 Microsoft Store 下载文件可能有点棘手。幸运的是，Adguard 是一个第三方 Web 服务和在线链接生成器，可以轻松地从 Microsoft Store 下载 appx、appxbundle 和 msixbundle 文件。在本文中，我们将指导你使用 Adguard 下载 HEVC 视频扩展的。</p>
+<span id="more"></span>
+
+<h1 id="解析链接"><a href="#解析链接" class="headerlink" title="解析链接"></a>解析链接</h1><ol>
+<li>打开 Adguard 网站。链接：<a href="https://store.rg-adguard.net./">https://store.rg-adguard.net。</a></li>
+<li>将HEVC视频扩展应用URL复制到文本框中。链接：<a href="https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq">https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq</a></li>
+<li>点击右侧的对号<br><img src="https://s2.loli.net/2023/06/21/OesYIrWaS9LPkqH.png" alt="下载HEVC视频扩展_01.png"></li>
+</ol>
+<h1 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h1><p>点击后缀为 .appxbundle 后缀的文件链接下载文件<br><img src="https://s2.loli.net/2023/06/21/wh6ZsPeaQviAKNV.png" alt="下载HEVC视频扩展_02.png"></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>双击下载的安装包，点击安装，稍等片刻</p>
+<p><img src="https://s2.loli.net/2023/06/21/KSeLUTNAvYZQ6Fx.png" alt="下载HEVC视频扩展_03.png"></p>
+]]></content>
+      <categories>
+        <category>系统维护</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Windows下制作便携版Python环境</title>
     <url>/2023/10196.html/</url>
     <content><![CDATA[<p>从Python 3.5开始，官方提供有 Windows embeddable package，这是为了让你可以将Pyhton内嵌在自己的应用程序而特别设计的最精简版本 Python 执行环境。本文利用该版本制作一个便携版的Python环境。</p>
@@ -1893,25 +1912,6 @@
 ]]></content>
       <categories>
         <category>开发工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Windows_10_11下载免费的 HEVC_Video_Extension</title>
-    <url>/2023/23496.html/</url>
-    <content><![CDATA[<p>HEVC（High Efficiency Video Coding）是一种视频压缩标准，能够以较小的文件大小进行高质量的视频播放。在某些情况下，用户可以从 Microsoft Store 下载 HEVC 视频扩展。但是，从 Microsoft Store 下载文件可能有点棘手。幸运的是，Adguard 是一个第三方 Web 服务和在线链接生成器，可以轻松地从 Microsoft Store 下载 appx、appxbundle 和 msixbundle 文件。在本文中，我们将指导你使用 Adguard 下载 HEVC 视频扩展的。</p>
-<span id="more"></span>
-
-<h1 id="解析链接"><a href="#解析链接" class="headerlink" title="解析链接"></a>解析链接</h1><ol>
-<li>打开 Adguard 网站。链接：<a href="https://store.rg-adguard.net./">https://store.rg-adguard.net。</a></li>
-<li>将HEVC视频扩展应用URL复制到文本框中。链接：<a href="https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq">https://www.microsoft.com/en-us/p/hevc-video-extensions-from-device-manufacturer/9n4wgh0z6vhq</a></li>
-<li>点击右侧的对号<br><img src="https://s2.loli.net/2023/06/21/OesYIrWaS9LPkqH.png" alt="下载HEVC视频扩展_01.png"></li>
-</ol>
-<h1 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h1><p>点击后缀为 .appxbundle 后缀的文件链接下载文件<br><img src="https://s2.loli.net/2023/06/21/wh6ZsPeaQviAKNV.png" alt="下载HEVC视频扩展_02.png"></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>双击下载的安装包，点击安装，稍等片刻</p>
-<p><img src="https://s2.loli.net/2023/06/21/KSeLUTNAvYZQ6Fx.png" alt="下载HEVC视频扩展_03.png"></p>
-]]></content>
-      <categories>
-        <category>系统维护</category>
       </categories>
   </entry>
   <entry>
@@ -1956,6 +1956,161 @@
       </categories>
   </entry>
   <entry>
+    <title>node.js使用npm-check-updates更新package.json中的依赖项</title>
+    <url>/2023/3114.html/</url>
+    <content><![CDATA[<p>老旧的软件包既会对安全构成威胁，也会对性能产生负面影响，使用最新的软件包可以防止出现漏洞，这意味着定期检查和更新依赖是很重要的。若使用『 npm install [package]@latest』来获得最新版本，当软件包数量较多时，则比较麻烦。本文介绍使用『npm-check-updates』更新软件包。</p>
+<span id="more"></span>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示当前目录中项目中所有新依赖项</span></span><br><span class="line">ncu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">升级项目的pcakage.json文件</span></span><br><span class="line">ncu -u</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新已安装的软件包和package-lock.json</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p><img src="https://s2.loli.net/2023/06/10/IThLO81wHjYy9kD.png" alt="npm-check-updates.png"></p>
+]]></content>
+      <categories>
+        <category>开发工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>测绘常用软件安装包</title>
+    <url>/2022/48142.html/</url>
+    <content><![CDATA[<p>本资源来自互联网，不定时更新，仅供学习使用！！！</p>
+<span id="more"></span>
+
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">版本</th>
+<th align="center">链接</th>
+<th align="center">访问码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ArcGIS Desktop</td>
+<td align="center">10.8.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/3y6FnabuAJnu">https://cloud.189.cn/t/3y6FnabuAJnu</a></td>
+<td align="center">4ubk</td>
+</tr>
+<tr>
+<td align="center">ArcGIS Pro</td>
+<td align="center">3.0.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/iyYRrmayqume">https://cloud.189.cn/t/iyYRrmayqume</a></td>
+<td align="center">3vk3</td>
+</tr>
+<tr>
+<td align="center">CASS</td>
+<td align="center">11.0.0.8</td>
+<td align="center"><a href="https://cloud.189.cn/t/bmINbu6JrArm">https://cloud.189.cn/t/bmINbu6JrArm</a></td>
+<td align="center">e1an</td>
+</tr>
+<tr>
+<td align="center">CloudCompare</td>
+<td align="center">2.12.4</td>
+<td align="center"><a href="https://cloud.189.cn/t/3ye2YnERzIVz">https://cloud.189.cn/t/3ye2YnERzIVz</a></td>
+<td align="center">zuq3</td>
+</tr>
+<tr>
+<td align="center">ContextCapture</td>
+<td align="center">23.0.0.1317</td>
+<td align="center"><a href="https://cloud.189.cn/t/ayuU32eUNJR3">https://cloud.189.cn/t/ayuU32eUNJR3</a></td>
+<td align="center">q7bp</td>
+</tr>
+<tr>
+<td align="center">EndNote</td>
+<td align="center">21.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/yUr2ayNnau2q">https://cloud.189.cn/t/yUr2ayNnau2q</a></td>
+<td align="center">sw2g</td>
+</tr>
+<tr>
+<td align="center">FME Form</td>
+<td align="center">2023.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/NFRZn2iYn2my">https://cloud.189.cn/t/NFRZn2iYn2my</a></td>
+<td align="center">br73</td>
+</tr>
+<tr>
+<td align="center">Global Mapper Pro</td>
+<td align="center">25.0</td>
+<td align="center"><a href="https://cloud.189.cn/t/vqauE3f6FNnq">https://cloud.189.cn/t/vqauE3f6FNnq</a></td>
+<td align="center">9fjz</td>
+</tr>
+<tr>
+<td align="center">IDL ENVI</td>
+<td align="center">5.6.0</td>
+<td align="center"><a href="https://cloud.189.cn/t/ZfmYjqqiiqAn">https://cloud.189.cn/t/ZfmYjqqiiqAn</a></td>
+<td align="center">qu78</td>
+</tr>
+<tr>
+<td align="center">Matlab</td>
+<td align="center">R2023a</td>
+<td align="center"><a href="https://cloud.189.cn/t/mmURJf6Rbuiq">https://cloud.189.cn/t/mmURJf6Rbuiq</a></td>
+<td align="center">6abg</td>
+</tr>
+<tr>
+<td align="center">Metashape Pro</td>
+<td align="center">2.0.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/fyamIjjaqYZb">https://cloud.189.cn/t/fyamIjjaqYZb</a></td>
+<td align="center">2paw</td>
+</tr>
+<tr>
+<td align="center">OriginPro</td>
+<td align="center">2022 SR1</td>
+<td align="center"><a href="https://cloud.189.cn/t/M7NFfqRzau6j">https://cloud.189.cn/t/M7NFfqRzau6j</a></td>
+<td align="center">9t0r</td>
+</tr>
+<tr>
+<td align="center">Pix4Dmapper</td>
+<td align="center">4.5.6</td>
+<td align="center"><a href="https://cloud.189.cn/t/7rIjUvZnqErm">https://cloud.189.cn/t/7rIjUvZnqErm</a></td>
+<td align="center">l4z7</td>
+</tr>
+<tr>
+<td align="center">Rhino</td>
+<td align="center">7.32</td>
+<td align="center"><a href="https://cloud.189.cn/t/JB3Yj2MVvuae">https://cloud.189.cn/t/JB3Yj2MVvuae</a></td>
+<td align="center">oj6x</td>
+</tr>
+<tr>
+<td align="center">SARscape</td>
+<td align="center">5.6.2.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/MzU3I3aQNRFr">https://cloud.189.cn/t/MzU3I3aQNRFr</a></td>
+<td align="center">kx1n</td>
+</tr>
+<tr>
+<td align="center">SPSS</td>
+<td align="center">27.0.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/YbEvMzIBFrIf">https://cloud.189.cn/t/YbEvMzIBFrIf</a></td>
+<td align="center">aa8m</td>
+</tr>
+<tr>
+<td align="center">Surfer</td>
+<td align="center">26.1.216</td>
+<td align="center"><a href="https://cloud.189.cn/t/jUZ3aazuIzYr">https://cloud.189.cn/t/jUZ3aazuIzYr</a></td>
+<td align="center">bbu9</td>
+</tr>
+</tbody></table>
+<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><ul>
+<li>2023.10.1：Surfer 25.1.229 → Surfer 26.1.216<br>2023.10.1：Global Mapper Pro 24.1.0 → Global Mapper Pro 25.0<br>2023.10.1：新增 EndNote 21.1</li>
+<li>2023.9.11：Rhino 7.31 → Rhino 7.32<br>2023.9.11：ContextCapture 10.20 → ContextCapture 23.0.0.1317<br>2023.9.11：FME Form 2023.0.2 → FME Form 2023.1<br>2023.9.11：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）</li>
+<li>2023.8.25：新增 FME Form 2023.0.2</li>
+<li>2023.7.15：Matlab R2022b → Matlab R2023a<br>2023.7.15：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）<br>2023.7.15：SARscape 5.6.2 → SARscape 5.6.2.1<br>2023.7.15：Metashape Pro 1.8.5 → Metashape Pro 2.0.2<br>2023.7.15：新增 Rhino 7.31</li>
+<li>2023.6.6：更新所有软件安装包的分享链接</li>
+<li>2023.2.21：Surfer 21.1.158 → Surfer 25.1.229<br>2023.2.21：Global Mapper Pro 24.0.0 → Global Mapper Pro 24.1.0<br>2023.2.21：调整软件顺序，按首字母升序排列</li>
+<li>2023.1.13：调整 SARscape 5.6.2 分享链接<br>2023.1.13：新增 SARScape 5.6.2_20220921 补丁包</li>
+<li>2022.10.28：Global Mapper Pro 23.1.0 → Global Mapper Pro 24.0.0<br>2022.10.28：ContextCapture 10.18 → ContextCapture 10.20<br>2022.10.28：新增 SPSS 27.0.1</li>
+<li>2022.10.12：CASS 11.0.0.6 → CASS 11.0.0.8<br>2022.10.12：ArcGIS Pro 3.0.1 → ArcGIS Pro 3.0.2<br>2022.10.12：Surfer 21.1.158 → Surfer 23.3.202<br>2022.10.12：新增 Metashape Pro 1.8.5<br>2022.10.12：新增 Pix4Dmapper 4.5.6<br>2022.10.12：新增 OriginPro 2022 SR1</li>
+<li>2022.9.19：Matlab R2022a → Matlab R2022b</li>
+<li>2022.9.17：ArcGIS Pro 2.8.6 → ArcGIS Pro 3.0.1</li>
+<li>2022.8.9：CASS 10.1.6 → CASS 11.0.0.6<br>2022.8.9：完善 CASS 11.0.0.6 压缩包中的安装说明</li>
+<li>2022.8.6：CloudCompare 2.12.3 → CloudCompare 2.12.4<br>2022.8.6：IDL ENVI 5.3.1 → IDL ENVI 5.6.0<br>2022.8.6：SARscape 5.2.1 → SARscape 5.6.2</li>
+<li>2022.8.4：Global Mapper 22.0.0 → Global Mapper Pro 23.1.0</li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
     <title>vcpkg包管理器快速入门</title>
     <url>/2023/6250.html/</url>
     <content><![CDATA[<p>Windows 下开发 C&#x2F;C++ 程序，少不了编译或配置第三方库，如GDAL、CGAL、PCL库等。但这些库编译或配置起来极为复杂，动辄需要花费半天甚至更久的时间。并且 C# 有 Nuget 包管理器、Python 有 PIP 包管理器，而 C&#x2F;C++ 却没有统一的包管理器。为了解决这个问题，微软在几年前推出 vcpkg 包管理器，本文将介绍此包管理器的使用。</p>
@@ -1993,22 +2148,6 @@
 <li>vcpkg：<a href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></li>
 <li>Microsoft：<a href="https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md">https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md</a></li>
 </ul>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>node.js使用npm-check-updates更新package.json中的依赖项</title>
-    <url>/2023/3114.html/</url>
-    <content><![CDATA[<p>老旧的软件包既会对安全构成威胁，也会对性能产生负面影响，使用最新的软件包可以防止出现漏洞，这意味着定期检查和更新依赖是很重要的。若使用『 npm install [package]@latest』来获得最新版本，当软件包数量较多时，则比较麻烦。本文介绍使用『npm-check-updates』更新软件包。</p>
-<span id="more"></span>
-
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示当前目录中项目中所有新依赖项</span></span><br><span class="line">ncu</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">升级项目的pcakage.json文件</span></span><br><span class="line">ncu -u</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新已安装的软件包和package-lock.json</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p><img src="https://s2.loli.net/2023/06/10/IThLO81wHjYy9kD.png" alt="npm-check-updates.png"></p>
 ]]></content>
       <categories>
         <category>开发工具</category>
@@ -2105,125 +2244,6 @@
 ]]></content>
       <categories>
         <category>博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>测绘常用软件安装包</title>
-    <url>/2022/48142.html/</url>
-    <content><![CDATA[<p>本资源来自互联网，随缘更新，部分软件仅供学习使用，不得商用，商用请联系软件开发商！！！</p>
-<span id="more"></span>
-
-<h1 id="分享说明"><a href="#分享说明" class="headerlink" title="分享说明"></a>分享说明</h1><ul>
-<li>仅供学习使用，不得商用，商用请联系软件发行商</li>
-<li>受阿里云盘分享文件类型限制，故采用伪装为 txt 文本的形式进行分享。若文件后缀为“.iso.txt”、“.dll.txt”、“.lic.txt”，请删除“.txt”后缀后使用</li>
-</ul>
-<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">版本</th>
-<th align="center">链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ArcGIS Desktop</td>
-<td align="center">10.8.2</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/s6DBReukFK7">https://www.aliyundrive.com/s/s6DBReukFK7</a> </br>提取码: 92wr</td>
-</tr>
-<tr>
-<td align="center">ArcGIS Pro</td>
-<td align="center">3.0.2</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/NAzHkNxckDk">https://www.aliyundrive.com/s/NAzHkNxckDk</a> </br>提取码: om31</td>
-</tr>
-<tr>
-<td align="center">CASS</td>
-<td align="center">11.0.0.8</td>
-<td align="center"><a href="https://cloud.189.cn/t/bmINbu6JrArm">https://cloud.189.cn/t/bmINbu6JrArm</a> 访问码：e1an</td>
-</tr>
-<tr>
-<td align="center">CloudCompare</td>
-<td align="center">2.12.4</td>
-<td align="center"><a href="https://cloud.189.cn/t/3ye2YnERzIVz">https://cloud.189.cn/t/3ye2YnERzIVz</a> 访问码：zuq3</td>
-</tr>
-<tr>
-<td align="center">ContextCapture</td>
-<td align="center">23.0.0.1317</td>
-<td align="center"><a href="https://cloud.189.cn/t/ayuU32eUNJR3">https://cloud.189.cn/t/ayuU32eUNJR3</a> 访问码：q7bp</td>
-</tr>
-<tr>
-<td align="center">FME Form</td>
-<td align="center">2023.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/NFRZn2iYn2my">https://cloud.189.cn/t/NFRZn2iYn2my</a> 访问码：br73</td>
-</tr>
-<tr>
-<td align="center">Global Mapper Pro</td>
-<td align="center">24.1.0</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/btWXQWjf55n">https://www.aliyundrive.com/s/btWXQWjf55n</a> </br>提取码: 3u6k</td>
-</tr>
-<tr>
-<td align="center">IDL ENVI</td>
-<td align="center">5.6.0</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/4LauhaLAb8b">https://www.aliyundrive.com/s/4LauhaLAb8b</a> </br>提取码: m2l6</td>
-</tr>
-<tr>
-<td align="center">Matlab</td>
-<td align="center">R2023a</td>
-<td align="center"><a href="https://cloud.189.cn/t/mmURJf6Rbuiq">https://cloud.189.cn/t/mmURJf6Rbuiq</a> 访问码：6abg</td>
-</tr>
-<tr>
-<td align="center">Metashape Pro</td>
-<td align="center">2.0.2</td>
-<td align="center"><a href="https://cloud.189.cn/t/fyamIjjaqYZb">https://cloud.189.cn/t/fyamIjjaqYZb</a> 访问码：2paw</td>
-</tr>
-<tr>
-<td align="center">OriginPro</td>
-<td align="center">2022 SR1</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/uffHnQeEVqk">https://www.aliyundrive.com/s/uffHnQeEVqk</a> </br>提取码: 58xa</td>
-</tr>
-<tr>
-<td align="center">Pix4Dmapper</td>
-<td align="center">4.5.6</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/psDeG8eKkxa">https://www.aliyundrive.com/s/psDeG8eKkxa</a> </br>提取码: h9e8</td>
-</tr>
-<tr>
-<td align="center">Rhino</td>
-<td align="center">7.32</td>
-<td align="center"><a href="https://cloud.189.cn/t/JB3Yj2MVvuae">https://cloud.189.cn/t/JB3Yj2MVvuae</a> 访问码：oj6x</td>
-</tr>
-<tr>
-<td align="center">SARscape</td>
-<td align="center">5.6.2.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/MzU3I3aQNRFr">https://cloud.189.cn/t/MzU3I3aQNRFr</a> 访问码：kx1n</td>
-</tr>
-<tr>
-<td align="center">SPSS</td>
-<td align="center">27.0.1</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/7ppzbhmmE5A">https://www.aliyundrive.com/s/7ppzbhmmE5A</a> </br>提取码: l0o7</td>
-</tr>
-<tr>
-<td align="center">Surfer</td>
-<td align="center">25.1.229</td>
-<td align="center"><a href="https://www.aliyundrive.com/s/QJ4JonoupDm">https://www.aliyundrive.com/s/QJ4JonoupDm</a> </br>提取码: 2n9i</td>
-</tr>
-</tbody></table>
-<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><ul>
-<li>2023.9.11：Rhino 7.31 → Rhino 7.32<br>2023.9.11：ContextCapture 10.20 → ContextCapture 23.0.0.1317<br>2023.9.11：FME Form 2023.0.2 → FME Form 2023.1<br>2023.9.11：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）</li>
-<li>2023.8.25：新增 FME Form 2023.0.2</li>
-<li>2023.7.15：Matlab R2022b → Matlab R2023a<br>2023.7.15：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）<br>2023.7.15：SARscape 5.6.2 → SARscape 5.6.2.1<br>2023.7.15：Metashape Pro 1.8.5 → Metashape Pro 2.0.2<br>2023.7.15：新增 Rhino 7.31</li>
-<li>2023.6.6：更新所有软件安装包的分享链接</li>
-<li>2023.2.21：Surfer 21.1.158 → Surfer 25.1.229<br>2023.2.21：Global Mapper Pro 24.0.0 → Global Mapper Pro 24.1.0<br>2023.2.21：调整软件顺序，按首字母升序排列</li>
-<li>2023.1.13：调整 SARscape 5.6.2 分享链接<br>2023.1.13：新增 SARScape 5.6.2_20220921 补丁包</li>
-<li>2022.10.28：Global Mapper Pro 23.1.0 → Global Mapper Pro 24.0.0<br>2022.10.28：ContextCapture 10.18 → ContextCapture 10.20<br>2022.10.28：新增 SPSS 27.0.1</li>
-<li>2022.10.12：CASS 11.0.0.6 → CASS 11.0.0.8<br>2022.10.12：ArcGIS Pro 3.0.1 → ArcGIS Pro 3.0.2<br>2022.10.12：Surfer 21.1.158 → Surfer 23.3.202<br>2022.10.12：新增 Metashape Pro 1.8.5<br>2022.10.12：新增 Pix4Dmapper 4.5.6<br>2022.10.12：新增 OriginPro 2022 SR1</li>
-<li>2022.9.19：Matlab R2022a → Matlab R2022b</li>
-<li>2022.9.17：ArcGIS Pro 2.8.6 → ArcGIS Pro 3.0.1</li>
-<li>2022.8.9：CASS 10.1.6 → CASS 11.0.0.6<br>2022.8.9：完善 CASS 11.0.0.6 压缩包中的安装说明</li>
-<li>2022.8.6：CloudCompare 2.12.3 → CloudCompare 2.12.4<br>2022.8.6：IDL ENVI 5.3.1 → IDL ENVI 5.6.0<br>2022.8.6：SARscape 5.2.1 → SARscape 5.6.2</li>
-<li>2022.8.4：Global Mapper 22.0.0 → Global Mapper Pro 23.1.0</li>
-</ul>
-]]></content>
-      <categories>
-        <category>测绘</category>
       </categories>
   </entry>
 </search>
