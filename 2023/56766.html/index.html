@@ -19,34 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"abandonssr.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="从Python 3.5开始，官方提供有 Windows embeddable package，这是为了让你可以将Pyhton内嵌在自己的应用程序而特别设计的最精简版本 Python 执行环境。本文利用该版本制作一个便携版的Python环境。">
+    <meta name="description" content="USB 与 Thunderbolt 版本大全，适合收藏！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows下制作便携版Python环境">
-<meta property="og:url" content="https://abandonssr.github.io/2023/10196.html/index.html">
+<meta property="og:title" content="USB和Thunderbolt的版本与传输速度">
+<meta property="og:url" content="https://abandonssr.github.io/2023/56766.html/index.html">
 <meta property="og:site_name" content="小张的杂货铺">
-<meta property="og:description" content="从Python 3.5开始，官方提供有 Windows embeddable package，这是为了让你可以将Pyhton内嵌在自己的应用程序而特别设计的最精简版本 Python 执行环境。本文利用该版本制作一个便携版的Python环境。">
+<meta property="og:description" content="USB 与 Thunderbolt 版本大全，适合收藏！">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2023/07/26/F49z7nEtiAk6VmK.png">
-<meta property="og:image" content="https://s2.loli.net/2023/07/26/8sywhpovL4cGqf9.png">
-<meta property="og:image" content="https://s2.loli.net/2023/07/26/RKZQwjpJaPTXDqb.png">
-<meta property="og:image" content="https://s2.loli.net/2023/07/26/jBtU21sAH8a9GIi.png">
-<meta property="og:image" content="https://s2.loli.net/2023/07/26/9b62aMCWD7vNgKt.png">
-<meta property="article:published_time" content="2023-07-26T09:14:22.000Z">
-<meta property="article:modified_time" content="2023-07-26T09:15:27.433Z">
+<meta property="article:published_time" content="2023-10-08T09:17:17.000Z">
+<meta property="article:modified_time" content="2023-10-08T09:21:25.067Z">
 <meta property="article:author" content="AbandonSSR">
 <meta property="article:tag" content="AbandonSSR的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2023/07/26/F49z7nEtiAk6VmK.png">
 
 
-<link rel="canonical" href="https://abandonssr.github.io/2023/10196.html/">
+<link rel="canonical" href="https://abandonssr.github.io/2023/56766.html/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://abandonssr.github.io/2023/10196.html/","path":"2023/10196.html/","title":"Windows下制作便携版Python环境"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://abandonssr.github.io/2023/56766.html/","path":"2023/56766.html/","title":"USB和Thunderbolt的版本与传输速度"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Windows下制作便携版Python环境 | 小张的杂货铺</title>
+<title>USB和Thunderbolt的版本与传输速度 | 小张的杂货铺</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -148,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDPython"><span class="nav-number">1.</span> <span class="nav-text">下载Python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pip%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">安装pip工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">启用自定义配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cpip%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">运行pip工具</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#USB"><span class="nav-number">1.</span> <span class="nav-text">USB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thunderbolt"><span class="nav-number">2.</span> <span class="nav-text">Thunderbolt</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://abandonssr.github.io/2023/10196.html/">
+    <link itemprop="mainEntityOfPage" href="https://abandonssr.github.io/2023/56766.html/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -217,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Windows下制作便携版Python环境 | 小张的杂货铺">
+      <meta itemprop="name" content="USB和Thunderbolt的版本与传输速度 | 小张的杂货铺">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Windows下制作便携版Python环境
+          USB和Thunderbolt的版本与传输速度
         </h1>
 
         <div class="post-meta-container">
@@ -234,7 +228,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-07-26 17:14:22 / 修改时间：17:15:27" itemprop="dateCreated datePublished" datetime="2023-07-26T17:14:22+08:00">2023-07-26</time>
+      <time title="创建时间：2023-10-08 17:17:17 / 修改时间：17:21:25" itemprop="dateCreated datePublished" datetime="2023-10-08T17:17:17+08:00">2023-10-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,7 +236,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">系统维护</span></a>
         </span>
     </span>
 
@@ -253,7 +247,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>194</span>
+      <span>146</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -270,36 +264,102 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>从Python 3.5开始，官方提供有 Windows embeddable package，这是为了让你可以将Pyhton内嵌在自己的应用程序而特别设计的最精简版本 Python 执行环境。本文利用该版本制作一个便携版的Python环境。</p>
+    <div class="post-body" itemprop="articleBody"><p>USB 与 Thunderbolt 版本大全，适合收藏！</p>
 <span id="more"></span>
 
-<h1 id="下载Python"><a href="#下载Python" class="headerlink" title="下载Python"></a>下载Python</h1><ol>
-<li><p>以 3.10.11 版本为例，下载 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.10.11/python-3.10.11-embed-amd64.zip">Windows embeddable package (64-bit)</a> 。</p>
-</li>
-<li><p>解压，运行Python</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./python</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2023/07/26/F49z7nEtiAk6VmK.png" alt="制作便携版Python_01.png"></p>
-</li>
-</ol>
-<h1 id="安装pip工具"><a href="#安装pip工具" class="headerlink" title="安装pip工具"></a>安装pip工具</h1><ol>
-<li><p>获取 get-pip.py 文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">curl</span> <span class="literal">-o</span> <span class="string">&quot;get-pip.py&quot;</span> <span class="string">&quot;https://bootstrap.pypa.io/get-pip.py&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行 get-pip.py 文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./python <span class="built_in">get-pip</span>.py</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><img src="https://s2.loli.net/2023/07/26/8sywhpovL4cGqf9.png" alt="制作便携版Python_02.png"></p>
-<h1 id="启用自定义配置"><a href="#启用自定义配置" class="headerlink" title="启用自定义配置"></a>启用自定义配置</h1><p>使用记事本打开 python310._pth 文件，取消 import site 前面的注释符。</p>
-<p><img src="https://s2.loli.net/2023/07/26/RKZQwjpJaPTXDqb.png" alt="制作便携版Python_03.png"></p>
-<h1 id="运行pip工具"><a href="#运行pip工具" class="headerlink" title="运行pip工具"></a>运行pip工具</h1><p>查看已安装的全部包</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Scripts\pip3 list</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2023/07/26/jBtU21sAH8a9GIi.png" alt="制作便携版Python_04.png"></p>
-<p>pip安装第三方包</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Scripts\pip3 install numpy</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2023/07/26/9b62aMCWD7vNgKt.png" alt="制作便携版Python_05.png"></p>
+<h1 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">曾用名</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">USB 1.0 Low-Speed</td>
+<td align="center"></td>
+<td align="center">1.5 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 1.0 Full-Speed</td>
+<td align="center"></td>
+<td align="center">12 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 2.0 High-Speed</td>
+<td align="center"></td>
+<td align="center">480 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×1</td>
+<td align="center">USB 3.0、USB 3.1 Gen 1</td>
+<td align="center">5 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×1</td>
+<td align="center">USB 3.1 Gen 2</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×2</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×1</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×1</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×2</td>
+<td align="center"></td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 4</td>
+<td align="center"></td>
+<td align="center">80 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
+<h1 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Thunderbolt 1</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 2</td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 3</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 4</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -317,7 +377,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://abandonssr.github.io/2023/10196.html/" title="Windows下制作便携版Python环境">https://abandonssr.github.io/2023/10196.html/</a>
+      <a href="https://abandonssr.github.io/2023/56766.html/" title="USB和Thunderbolt的版本与传输速度">https://abandonssr.github.io/2023/56766.html/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -330,14 +390,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/6250.html/" rel="prev" title="vcpkg包管理器快速入门">
-                  <i class="fa fa-angle-left"></i> vcpkg包管理器快速入门
+                <a href="/2023/10196.html/" rel="prev" title="Windows下制作便携版Python环境">
+                  <i class="fa fa-angle-left"></i> Windows下制作便携版Python环境
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/56766.html/" rel="next" title="USB和Thunderbolt的版本与传输速度">
-                  USB和Thunderbolt的版本与传输速度 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

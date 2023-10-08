@@ -2246,4 +2246,108 @@
         <category>博客</category>
       </categories>
   </entry>
+  <entry>
+    <title>USB和Thunderbolt的版本与传输速度</title>
+    <url>/2023/56766.html/</url>
+    <content><![CDATA[<p>USB 与 Thunderbolt 版本大全，适合收藏！</p>
+<span id="more"></span>
+
+<h1 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">曾用名</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">USB 1.0 Low-Speed</td>
+<td align="center"></td>
+<td align="center">1.5 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 1.0 Full-Speed</td>
+<td align="center"></td>
+<td align="center">12 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 2.0 High-Speed</td>
+<td align="center"></td>
+<td align="center">480 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×1</td>
+<td align="center">USB 3.0、USB 3.1 Gen 1</td>
+<td align="center">5 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×1</td>
+<td align="center">USB 3.1 Gen 2</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×2</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×1</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×1</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×2</td>
+<td align="center"></td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 4</td>
+<td align="center"></td>
+<td align="center">80 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
+<h1 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Thunderbolt 1</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 2</td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 3</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 4</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>系统维护</category>
+      </categories>
+  </entry>
 </search>
