@@ -56,49 +56,6 @@
       </categories>
   </entry>
   <entry>
-    <title>005.格网法计算土石方量</title>
-    <url>/2022/27758.html/</url>
-    <content><![CDATA[<p>利用格网法对采集的高密度地面点云计算基于某一高程的土石方量</p>
-<span id="more"></span>
-
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>打开地面点云，以某露天矿中心部分点云为例</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/07/29/xHmgRM9fBDNrcYa.png" alt="CloudCompare.005.01.png"></p>
-<ol start="2">
-<li><p>计算土石方量，选中地面点云，点击菜单栏中“Tools&#x2F;Volume&#x2F;Compute 2.5D volume”工具，主要进行以下参数设置，最后点击“Update”按钮。在“Results”中可以找到“Add volume”和“Removed volume”，即为土石方量。</p>
-<ul>
-<li><p>Ground &#x2F; Before</p>
-<ul>
-<li><p>Source：Constant(常数)</p>
-</li>
-<li><p>Default height：任意高程</p>
-</li>
-</ul>
-</li>
-<li><p>Ceil &#x2F; After</p>
-<ul>
-<li>Source：地面点云</li>
-<li>Empty cells：interpolate(插值)&#x2F;leave empty(留空)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
-</ul>
-</li>
-<li><p>Grid</p>
-<ul>
-<li>step：格网尺寸</li>
-<li>projection dir.：选择“Z”</li>
-<li>cell height：average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/07/29/R5zPJ8bZdqGVLl9.png" alt="CloudCompare.005.02.png"></p>
-]]></content>
-      <categories>
-        <category>CloudCompare</category>
-      </categories>
-  </entry>
-  <entry>
     <title>003.对仅含坐标的点云设置环境光遮蔽</title>
     <url>/2022/25132.html/</url>
     <content><![CDATA[<p>当点云仅含坐标信息时，导入CloudCompare后无法分辨各类物体，因此需要设置环境光遮蔽以分辨各位物体</p>
@@ -158,32 +115,43 @@
       </categories>
   </entry>
   <entry>
-    <title>006.制作多个视角之间切换的视频</title>
-    <url>/2022/3116.html/</url>
-    <content><![CDATA[<p>通过Animation插件可将多个视角之间的切换制作成视频，以方便展示模型或点云</p>
+    <title>005.格网法计算土石方量</title>
+    <url>/2022/27758.html/</url>
+    <content><![CDATA[<p>利用格网法对采集的高密度地面点云计算基于某一高程的土石方量</p>
 <span id="more"></span>
 
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>打开需要展示的点云或模型，以斯坦福大学的兔子为例</li>
+<li>打开地面点云，以某露天矿中心部分点云为例</li>
 </ol>
-<p><img src="https://s2.loli.net/2022/07/29/JVy98tSKvjOiZTH.png" alt="CloudCompare.006.01.png"></p>
+<p><img src="https://s2.loli.net/2022/07/29/xHmgRM9fBDNrcYa.png" alt="CloudCompare.005.01.png"></p>
 <ol start="2">
-<li>将兔子切换到合适的位置，按“Ctrl + V”保存当前视角(或点击菜单栏中“Display&#x2F;Save viewport as object”工具)。重复该步骤，直到需要的视角均已保存。</li>
-</ol>
-<p><img src="https://s2.loli.net/2022/07/29/W4TOXtVj2nw9Zy5.png" alt="CloudCompare.006.02.png"></p>
-<ol start="3">
-<li>选择上步创建的全部视角，点击工具栏中“Create a movie from a series of views”(或菜单栏中“Plugins&#x2F;Animation”)工具，设置以下参数。最后点击“Render”。<ul>
-<li>Total duration：全部时长，以秒为单位</li>
-<li>Automatic steps duration：勾选</li>
-<li>Frame rate：帧率，默认25帧&#x2F;s</li>
-<li>Bitrate：比特率，默认5000kbps</li>
-<li>Output file：输出位置</li>
-<li>Formate：输出格式，默认为自动</li>
+<li><p>计算土石方量，选中地面点云，点击菜单栏中“Tools&#x2F;Volume&#x2F;Compute 2.5D volume”工具，主要进行以下参数设置，最后点击“Update”按钮。在“Results”中可以找到“Add volume”和“Removed volume”，即为土石方量。</p>
+<ul>
+<li><p>Ground &#x2F; Before</p>
+<ul>
+<li><p>Source：Constant(常数)</p>
+</li>
+<li><p>Default height：任意高程</p>
+</li>
+</ul>
+</li>
+<li><p>Ceil &#x2F; After</p>
+<ul>
+<li>Source：地面点云</li>
+<li>Empty cells：interpolate(插值)&#x2F;leave empty(留空)&#x2F;average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
+<li><p>Grid</p>
+<ul>
+<li>step：格网尺寸</li>
+<li>projection dir.：选择“Z”</li>
+<li>cell height：average height(平均高程)&#x2F;minimum height(最小高程)&#x2F;maximum height(最大高程)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://s2.loli.net/2022/07/29/yLXC3TlNJVPagOH.png" alt="CloudCompare.006.03.png"></p>
-<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz</a></p>
+<p><img src="https://s2.loli.net/2022/07/29/R5zPJ8bZdqGVLl9.png" alt="CloudCompare.005.02.png"></p>
 ]]></content>
       <categories>
         <category>CloudCompare</category>
@@ -234,6 +202,38 @@
 </ol>
 <p><img src="https://s2.loli.net/2022/08/02/LqwgSRia1O7TkyW.png" alt="CloudCompare.007.03.png"></p>
 <p><img src="https://s2.loli.net/2022/08/02/6YwKofFU8OlzQib.png" alt="CloudCompare.007.04.png"></p>
+]]></content>
+      <categories>
+        <category>CloudCompare</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>006.制作多个视角之间切换的视频</title>
+    <url>/2022/3116.html/</url>
+    <content><![CDATA[<p>通过Animation插件可将多个视角之间的切换制作成视频，以方便展示模型或点云</p>
+<span id="more"></span>
+
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>打开需要展示的点云或模型，以斯坦福大学的兔子为例</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/JVy98tSKvjOiZTH.png" alt="CloudCompare.006.01.png"></p>
+<ol start="2">
+<li>将兔子切换到合适的位置，按“Ctrl + V”保存当前视角(或点击菜单栏中“Display&#x2F;Save viewport as object”工具)。重复该步骤，直到需要的视角均已保存。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/W4TOXtVj2nw9Zy5.png" alt="CloudCompare.006.02.png"></p>
+<ol start="3">
+<li>选择上步创建的全部视角，点击工具栏中“Create a movie from a series of views”(或菜单栏中“Plugins&#x2F;Animation”)工具，设置以下参数。最后点击“Render”。<ul>
+<li>Total duration：全部时长，以秒为单位</li>
+<li>Automatic steps duration：勾选</li>
+<li>Frame rate：帧率，默认25帧&#x2F;s</li>
+<li>Bitrate：比特率，默认5000kbps</li>
+<li>Output file：输出位置</li>
+<li>Formate：输出格式，默认为自动</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/07/29/yLXC3TlNJVPagOH.png" alt="CloudCompare.006.03.png"></p>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p><a href="http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz">http://graphics.stanford.edu/pub/3Dscanrep/bunny.tar.gz</a></p>
 ]]></content>
       <categories>
         <category>CloudCompare</category>
@@ -336,6 +336,32 @@
       </categories>
   </entry>
   <entry>
+    <title>GDAL：C#开发环境设置</title>
+    <url>/2023/5137.html/</url>
+    <content><![CDATA[<p>本文简要介绍C#开发环境下，GDAL库的配置。</p>
+<span id="more"></span>
+
+<h1 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h1><ol>
+<li><p>使用NuGet包管理器，安装『GDAL』和『GDAL.Native』</p>
+</li>
+<li><p>在程序主函数中，写入如下代码配置GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    GdalConfiguration.ConfigureGdal();</span><br><span class="line">    GdalConfiguration.ConfigureOgr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下命令空间</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试GDAL库</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><ul>
+<li>使用NuGet包管理器导入GDAL库时，请使用控制台或WinForm项目，不要使用WPF项目，具体原因请查看「<a href="https://abandonssr.github.io/2023/30480.html/">WPF的坑：NuGet引入源代码包导致编译失败</a>」文章。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CesiumForUnity快速入门</title>
     <url>/2023/59239.html/</url>
     <content><![CDATA[<p>Cesium For Unity是将 Cesium 和  Unity 结合，既拥有 Cesium 导入含有地理坐标资源的能力，又拥有与 Unity 各类游戏对象结合的能力，是未来智慧城市、智慧乡村等软件系统的发展方向，本文将介绍『Cesium For Unity』的快速上手。</p>
@@ -381,32 +407,6 @@
 <li>点击菜单栏下方的控制按钮<br><img src="https://s2.loli.net/2023/06/10/ZvqMXt9Wl2SeJaQ.png" alt="CesiumForUnity_012.png"></li>
 <li>使用『W、A、S、D』和『Q、E』移动相机<br><img src="https://s2.loli.net/2023/06/10/pSAis7xHOnohMlP.png" alt="CesiumForUnity_013.png"></li>
 </ol>
-]]></content>
-      <categories>
-        <category>测绘</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>GDAL：C#开发环境设置</title>
-    <url>/2023/5137.html/</url>
-    <content><![CDATA[<p>本文简要介绍C#开发环境下，GDAL库的配置。</p>
-<span id="more"></span>
-
-<h1 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h1><ol>
-<li><p>使用NuGet包管理器，安装『GDAL』和『GDAL.Native』</p>
-</li>
-<li><p>在程序主函数中，写入如下代码配置GDAL库</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    GdalConfiguration.ConfigureGdal();</span><br><span class="line">    GdalConfiguration.ConfigureOgr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加以下命令空间</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> OSGeo.GDAL;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OGR;</span><br><span class="line"><span class="keyword">using</span> OSGeo.OSR;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试GDAL库</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 读取栅格影像，本文使用 SRTM 30M DEM数据</span></span><br><span class="line">Dataset ds = Gdal.Open(<span class="string">&quot;N35E113.hgt&quot;</span>, Access.GA_ReadOnly);</span><br><span class="line"><span class="keyword">if</span> (ds == <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Can&#x27;t open &quot;</span> + <span class="string">&quot;N35E113.hgt&quot;</span>);</span><br><span class="line">    System.Environment.Exit(<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入栅格影像信息</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Raster dataset parameters:&quot;</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  Projection: &quot;</span> + ds.GetProjectionRef());</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterCount: &quot;</span> + ds.RasterCount);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;  RasterSize (&quot;</span> + ds.RasterXSize + <span class="string">&quot;,&quot;</span> + ds.RasterYSize + <span class="string">&quot;)&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><ul>
-<li>使用NuGet包管理器导入GDAL库时，请使用控制台或WinForm项目，不要使用WPF项目，具体原因请查看「<a href="https://abandonssr.github.io/2023/30480.html/">WPF的坑：NuGet引入源代码包导致编译失败</a>」文章。</li>
-</ul>
 ]]></content>
       <categories>
         <category>测绘</category>
@@ -1602,6 +1602,110 @@
       </categories>
   </entry>
   <entry>
+    <title>USB和Thunderbolt的版本与传输速度</title>
+    <url>/2023/56766.html/</url>
+    <content><![CDATA[<p>USB 与 Thunderbolt 版本大全，适合收藏！</p>
+<span id="more"></span>
+
+<h1 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">曾用名</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">USB 1.0 Low-Speed</td>
+<td align="center"></td>
+<td align="center">1.5 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 1.0 Full-Speed</td>
+<td align="center"></td>
+<td align="center">12 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 2.0 High-Speed</td>
+<td align="center"></td>
+<td align="center">480 Mbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×1</td>
+<td align="center">USB 3.0、USB 3.1 Gen 1</td>
+<td align="center">5 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×1</td>
+<td align="center">USB 3.1 Gen 2</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 1×2</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB 3.2 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×1</td>
+<td align="center"></td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 2×2</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×1</td>
+<td align="center"></td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 3×2</td>
+<td align="center"></td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">USB4 Gen 4</td>
+<td align="center"></td>
+<td align="center">80 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
+<h1 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h1><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">传输速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Thunderbolt 1</td>
+<td align="center">10 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 2</td>
+<td align="center">20 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 3</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+<tr>
+<td align="center">Thunderbolt 4</td>
+<td align="center">40 Gbit&#x2F;s</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>系统维护</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SARscape对Sentinel-1数据进行D-InSAR处理</title>
     <url>/2023/45730.html/</url>
     <content><![CDATA[<p>本文详细介绍了利用SARscape软件对Sentinel-1数据进行D-InSAR处理的全流程。适合收藏！</p>
@@ -1972,189 +2076,6 @@
       </categories>
   </entry>
   <entry>
-    <title>测绘常用软件安装包</title>
-    <url>/2022/48142.html/</url>
-    <content><![CDATA[<p>本资源来自互联网，不定时更新，仅供学习使用！！！</p>
-<span id="more"></span>
-
-<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">版本</th>
-<th align="center">链接</th>
-<th align="center">访问码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ArcGIS Desktop</td>
-<td align="center">10.8.2</td>
-<td align="center"><a href="https://cloud.189.cn/t/3y6FnabuAJnu">https://cloud.189.cn/t/3y6FnabuAJnu</a></td>
-<td align="center">4ubk</td>
-</tr>
-<tr>
-<td align="center">ArcGIS Pro</td>
-<td align="center">3.0.2</td>
-<td align="center"><a href="https://cloud.189.cn/t/iyYRrmayqume">https://cloud.189.cn/t/iyYRrmayqume</a></td>
-<td align="center">3vk3</td>
-</tr>
-<tr>
-<td align="center">CASS</td>
-<td align="center">11.0.0.8</td>
-<td align="center"><a href="https://cloud.189.cn/t/bmINbu6JrArm">https://cloud.189.cn/t/bmINbu6JrArm</a></td>
-<td align="center">e1an</td>
-</tr>
-<tr>
-<td align="center">CloudCompare</td>
-<td align="center">2.12.4</td>
-<td align="center"><a href="https://cloud.189.cn/t/3ye2YnERzIVz">https://cloud.189.cn/t/3ye2YnERzIVz</a></td>
-<td align="center">zuq3</td>
-</tr>
-<tr>
-<td align="center">ContextCapture</td>
-<td align="center">23.0.0.1317</td>
-<td align="center"><a href="https://cloud.189.cn/t/ayuU32eUNJR3">https://cloud.189.cn/t/ayuU32eUNJR3</a></td>
-<td align="center">q7bp</td>
-</tr>
-<tr>
-<td align="center">EndNote</td>
-<td align="center">21.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/yUr2ayNnau2q">https://cloud.189.cn/t/yUr2ayNnau2q</a></td>
-<td align="center">sw2g</td>
-</tr>
-<tr>
-<td align="center">FME Form</td>
-<td align="center">2023.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/NFRZn2iYn2my">https://cloud.189.cn/t/NFRZn2iYn2my</a></td>
-<td align="center">br73</td>
-</tr>
-<tr>
-<td align="center">Global Mapper Pro</td>
-<td align="center">25.0</td>
-<td align="center"><a href="https://cloud.189.cn/t/vqauE3f6FNnq">https://cloud.189.cn/t/vqauE3f6FNnq</a></td>
-<td align="center">9fjz</td>
-</tr>
-<tr>
-<td align="center">IDL ENVI</td>
-<td align="center">5.6.0</td>
-<td align="center"><a href="https://cloud.189.cn/t/ZfmYjqqiiqAn">https://cloud.189.cn/t/ZfmYjqqiiqAn</a></td>
-<td align="center">qu78</td>
-</tr>
-<tr>
-<td align="center">Matlab</td>
-<td align="center">R2023a</td>
-<td align="center"><a href="https://cloud.189.cn/t/mmURJf6Rbuiq">https://cloud.189.cn/t/mmURJf6Rbuiq</a></td>
-<td align="center">6abg</td>
-</tr>
-<tr>
-<td align="center">Metashape Pro</td>
-<td align="center">2.0.3</td>
-<td align="center"><a href="https://cloud.189.cn/t/Iji2a2mymYBb">https://cloud.189.cn/t/Iji2a2mymYBb</a></td>
-<td align="center">6d3f</td>
-</tr>
-<tr>
-<td align="center">OriginPro</td>
-<td align="center">2022 SR1</td>
-<td align="center"><a href="https://cloud.189.cn/t/M7NFfqRzau6j">https://cloud.189.cn/t/M7NFfqRzau6j</a></td>
-<td align="center">9t0r</td>
-</tr>
-<tr>
-<td align="center">Pix4Dmapper</td>
-<td align="center">4.5.6</td>
-<td align="center"><a href="https://cloud.189.cn/t/7rIjUvZnqErm">https://cloud.189.cn/t/7rIjUvZnqErm</a></td>
-<td align="center">l4z7</td>
-</tr>
-<tr>
-<td align="center">Rhino</td>
-<td align="center">7.32</td>
-<td align="center"><a href="https://cloud.189.cn/t/JB3Yj2MVvuae">https://cloud.189.cn/t/JB3Yj2MVvuae</a></td>
-<td align="center">oj6x</td>
-</tr>
-<tr>
-<td align="center">SARscape</td>
-<td align="center">5.6.2.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/MzU3I3aQNRFr">https://cloud.189.cn/t/MzU3I3aQNRFr</a></td>
-<td align="center">kx1n</td>
-</tr>
-<tr>
-<td align="center">SPSS</td>
-<td align="center">27.0.1</td>
-<td align="center"><a href="https://cloud.189.cn/t/YbEvMzIBFrIf">https://cloud.189.cn/t/YbEvMzIBFrIf</a></td>
-<td align="center">aa8m</td>
-</tr>
-<tr>
-<td align="center">Surfer</td>
-<td align="center">26.1.216</td>
-<td align="center"><a href="https://cloud.189.cn/t/jUZ3aazuIzYr">https://cloud.189.cn/t/jUZ3aazuIzYr</a></td>
-<td align="center">bbu9</td>
-</tr>
-</tbody></table>
-<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><ul>
-<li>2023.10.10：Metashape Pro 2.0.2 → Metashape Pro 2.0.3</li>
-<li>2023.10.1：Surfer 25.1.229 → Surfer 26.1.216<br>2023.10.1：Global Mapper Pro 24.1.0 → Global Mapper Pro 25.0<br>2023.10.1：新增 EndNote 21.1</li>
-<li>2023.9.11：Rhino 7.31 → Rhino 7.32<br>2023.9.11：ContextCapture 10.20 → ContextCapture 23.0.0.1317<br>2023.9.11：FME Form 2023.0.2 → FME Form 2023.1<br>2023.9.11：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）</li>
-<li>2023.8.25：新增 FME Form 2023.0.2</li>
-<li>2023.7.15：Matlab R2022b → Matlab R2023a<br>2023.7.15：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）<br>2023.7.15：SARscape 5.6.2 → SARscape 5.6.2.1<br>2023.7.15：Metashape Pro 1.8.5 → Metashape Pro 2.0.2<br>2023.7.15：新增 Rhino 7.31</li>
-<li>2023.6.6：更新所有软件安装包的分享链接</li>
-<li>2023.2.21：Surfer 21.1.158 → Surfer 25.1.229<br>2023.2.21：Global Mapper Pro 24.0.0 → Global Mapper Pro 24.1.0<br>2023.2.21：调整软件顺序，按首字母升序排列</li>
-<li>2023.1.13：调整 SARscape 5.6.2 分享链接<br>2023.1.13：新增 SARScape 5.6.2_20220921 补丁包</li>
-<li>2022.10.28：Global Mapper Pro 23.1.0 → Global Mapper Pro 24.0.0<br>2022.10.28：ContextCapture 10.18 → ContextCapture 10.20<br>2022.10.28：新增 SPSS 27.0.1</li>
-<li>2022.10.12：CASS 11.0.0.6 → CASS 11.0.0.8<br>2022.10.12：ArcGIS Pro 3.0.1 → ArcGIS Pro 3.0.2<br>2022.10.12：Surfer 21.1.158 → Surfer 23.3.202<br>2022.10.12：新增 Metashape Pro 1.8.5<br>2022.10.12：新增 Pix4Dmapper 4.5.6<br>2022.10.12：新增 OriginPro 2022 SR1</li>
-<li>2022.9.19：Matlab R2022a → Matlab R2022b</li>
-<li>2022.9.17：ArcGIS Pro 2.8.6 → ArcGIS Pro 3.0.1</li>
-<li>2022.8.9：CASS 10.1.6 → CASS 11.0.0.6<br>2022.8.9：完善 CASS 11.0.0.6 压缩包中的安装说明</li>
-<li>2022.8.6：CloudCompare 2.12.3 → CloudCompare 2.12.4<br>2022.8.6：IDL ENVI 5.3.1 → IDL ENVI 5.6.0<br>2022.8.6：SARscape 5.2.1 → SARscape 5.6.2</li>
-<li>2022.8.4：Global Mapper 22.0.0 → Global Mapper Pro 23.1.0</li>
-</ul>
-]]></content>
-      <categories>
-        <category>测绘</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>vcpkg包管理器快速入门</title>
-    <url>/2023/6250.html/</url>
-    <content><![CDATA[<p>Windows 下开发 C&#x2F;C++ 程序，少不了编译或配置第三方库，如GDAL、CGAL、PCL库等。但这些库编译或配置起来极为复杂，动辄需要花费半天甚至更久的时间。并且 C# 有 Nuget 包管理器、Python 有 PIP 包管理器，而 C&#x2F;C++ 却没有统一的包管理器。为了解决这个问题，微软在几年前推出 vcpkg 包管理器，本文将介绍此包管理器的使用。</p>
-<span id="more"></span>
-
-<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><p>前置条件:</p>
-<ul>
-<li>Windows 7 或更新的版本</li>
-<li>Git</li>
-<li>Visual Studio 2015 Update 3 或更新的版本（<strong>包含英文语言包</strong>）</li>
-</ul>
-<ol>
-<li><p>从 GitHub 上创建项目的副本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/microsoft/vcpkg</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>推荐使用 Powershell 运行 bootstrap.bat 脚本</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\bootstrap<span class="literal">-vcpkg</span>.bat</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装需要的库，如：PCL</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg install pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>卸载不需要的库，如：PCL</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg remove pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>列出已经安装的库</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg list</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>集成到  Visual Studio 中，(可能需要管理员权限)</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg integrate install</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>所有已安装的库均可使用 <code>#include</code> 包含您需使用的库的头文件且无需额外配置。如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pcl/io/pcd_io.h&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li>vcpkg：<a href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></li>
-<li>Microsoft：<a href="https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md">https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>开发工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>利用 Github Pages 搭建个人博客</title>
     <url>/2022/64270.html/</url>
     <content><![CDATA[<p>现如今，想搭建一个博客网站，当然不用自己从头开始写 html\css\javascript，因为有许多开源的代码可以供我们选择。Hexo 就是一个专门用于博客类网站的开源项目，使用 Node.js 语言开发，网上大多数的个人博客都是使用这个框架搭建的。同时，利用 Github 提供的 Pages 服务，可以免费搭建博客网站。</p>
@@ -2248,107 +2169,187 @@
       </categories>
   </entry>
   <entry>
-    <title>USB和Thunderbolt的版本与传输速度</title>
-    <url>/2023/56766.html/</url>
-    <content><![CDATA[<p>USB 与 Thunderbolt 版本大全，适合收藏！</p>
+    <title>测绘常用软件安装包</title>
+    <url>/2022/48142.html/</url>
+    <content><![CDATA[<p>本资源来自互联网，不定时更新，仅供学习使用！！！</p>
 <span id="more"></span>
 
-<h1 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h1><table>
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><table>
 <thead>
 <tr>
 <th align="center">名称</th>
-<th align="center">曾用名</th>
-<th align="center">传输速度</th>
+<th align="center">版本</th>
+<th align="center">链接</th>
+<th align="center">访问码</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">USB 1.0 Low-Speed</td>
-<td align="center"></td>
-<td align="center">1.5 Mbit&#x2F;s</td>
+<td align="center">ArcGIS Desktop</td>
+<td align="center">10.8.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/3y6FnabuAJnu">https://cloud.189.cn/t/3y6FnabuAJnu</a></td>
+<td align="center">4ubk</td>
 </tr>
 <tr>
-<td align="center">USB 1.0 Full-Speed</td>
-<td align="center"></td>
-<td align="center">12 Mbit&#x2F;s</td>
+<td align="center">ArcGIS Pro</td>
+<td align="center">3.0.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/iyYRrmayqume">https://cloud.189.cn/t/iyYRrmayqume</a></td>
+<td align="center">3vk3</td>
 </tr>
 <tr>
-<td align="center">USB 2.0 High-Speed</td>
-<td align="center"></td>
-<td align="center">480 Mbit&#x2F;s</td>
+<td align="center">CASS</td>
+<td align="center">11.0.0.8</td>
+<td align="center"><a href="https://cloud.189.cn/t/bmINbu6JrArm">https://cloud.189.cn/t/bmINbu6JrArm</a></td>
+<td align="center">e1an</td>
 </tr>
 <tr>
-<td align="center">USB 3.2 Gen 1×1</td>
-<td align="center">USB 3.0、USB 3.1 Gen 1</td>
-<td align="center">5 Gbit&#x2F;s</td>
+<td align="center">CloudCompare</td>
+<td align="center">2.12.4</td>
+<td align="center"><a href="https://cloud.189.cn/t/3ye2YnERzIVz">https://cloud.189.cn/t/3ye2YnERzIVz</a></td>
+<td align="center">zuq3</td>
 </tr>
 <tr>
-<td align="center">USB 3.2 Gen 2×1</td>
-<td align="center">USB 3.1 Gen 2</td>
-<td align="center">10 Gbit&#x2F;s</td>
+<td align="center">ContextCapture</td>
+<td align="center">23.0.0.1317</td>
+<td align="center"><a href="https://cloud.189.cn/t/ayuU32eUNJR3">https://cloud.189.cn/t/ayuU32eUNJR3</a></td>
+<td align="center">q7bp</td>
 </tr>
 <tr>
-<td align="center">USB 3.2 Gen 1×2</td>
-<td align="center"></td>
-<td align="center">10 Gbit&#x2F;s</td>
+<td align="center">EndNote</td>
+<td align="center">21.2</td>
+<td align="center"><a href="https://cloud.189.cn/t/eimaMjVjqeUv">https://cloud.189.cn/t/eimaMjVjqeUv</a></td>
+<td align="center">1mqj</td>
 </tr>
 <tr>
-<td align="center">USB 3.2 Gen 2×2</td>
-<td align="center"></td>
-<td align="center">20 Gbit&#x2F;s</td>
+<td align="center">FME Form</td>
+<td align="center">2023.1.1.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/FjAfEjve2YRv">https://cloud.189.cn/t/FjAfEjve2YRv</a></td>
+<td align="center">q3ix</td>
 </tr>
 <tr>
-<td align="center">USB4 Gen 2×1</td>
-<td align="center"></td>
-<td align="center">10 Gbit&#x2F;s</td>
+<td align="center">Global Mapper Pro</td>
+<td align="center">25.0</td>
+<td align="center"><a href="https://cloud.189.cn/t/vqauE3f6FNnq">https://cloud.189.cn/t/vqauE3f6FNnq</a></td>
+<td align="center">9fjz</td>
 </tr>
 <tr>
-<td align="center">USB4 Gen 2×2</td>
-<td align="center"></td>
-<td align="center">20 Gbit&#x2F;s</td>
+<td align="center">IDL ENVI</td>
+<td align="center">5.6.0</td>
+<td align="center"><a href="https://cloud.189.cn/t/ZfmYjqqiiqAn">https://cloud.189.cn/t/ZfmYjqqiiqAn</a></td>
+<td align="center">qu78</td>
 </tr>
 <tr>
-<td align="center">USB4 Gen 3×1</td>
-<td align="center"></td>
-<td align="center">20 Gbit&#x2F;s</td>
+<td align="center">MATLAB</td>
+<td align="center">R2023a</td>
+<td align="center"><a href="https://cloud.189.cn/t/mmURJf6Rbuiq">https://cloud.189.cn/t/mmURJf6Rbuiq</a></td>
+<td align="center">6abg</td>
 </tr>
 <tr>
-<td align="center">USB4 Gen 3×2</td>
-<td align="center"></td>
-<td align="center">40 Gbit&#x2F;s</td>
+<td align="center">Metashape Pro</td>
+<td align="center">2.1.0</td>
+<td align="center"><a href="https://cloud.189.cn/t/yiIfuaziIFji">https://cloud.189.cn/t/yiIfuaziIFji</a></td>
+<td align="center">grf1</td>
 </tr>
 <tr>
-<td align="center">USB4 Gen 4</td>
-<td align="center"></td>
-<td align="center">80 Gbit&#x2F;s</td>
+<td align="center">OriginPro</td>
+<td align="center">2022 SR1</td>
+<td align="center"><a href="https://cloud.189.cn/t/M7NFfqRzau6j">https://cloud.189.cn/t/M7NFfqRzau6j</a></td>
+<td align="center">9t0r</td>
+</tr>
+<tr>
+<td align="center">Pix4Dmapper</td>
+<td align="center">4.5.6</td>
+<td align="center"><a href="https://cloud.189.cn/t/7rIjUvZnqErm">https://cloud.189.cn/t/7rIjUvZnqErm</a></td>
+<td align="center">l4z7</td>
+</tr>
+<tr>
+<td align="center">Rhino</td>
+<td align="center">7.34</td>
+<td align="center"><a href="https://cloud.189.cn/t/QBvyeuIRJ7bu">https://cloud.189.cn/t/QBvyeuIRJ7bu</a></td>
+<td align="center">jmc0</td>
+</tr>
+<tr>
+<td align="center">SARscape</td>
+<td align="center">5.6.2.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/MzU3I3aQNRFr">https://cloud.189.cn/t/MzU3I3aQNRFr</a></td>
+<td align="center">kx1n</td>
+</tr>
+<tr>
+<td align="center">SPSS</td>
+<td align="center">27.0.1</td>
+<td align="center"><a href="https://cloud.189.cn/t/YbEvMzIBFrIf">https://cloud.189.cn/t/YbEvMzIBFrIf</a></td>
+<td align="center">aa8m</td>
+</tr>
+<tr>
+<td align="center">Surfer</td>
+<td align="center">26.1.216</td>
+<td align="center"><a href="https://cloud.189.cn/t/jUZ3aazuIzYr">https://cloud.189.cn/t/jUZ3aazuIzYr</a></td>
+<td align="center">bbu9</td>
 </tr>
 </tbody></table>
-<h1 id="Thunderbolt"><a href="#Thunderbolt" class="headerlink" title="Thunderbolt"></a>Thunderbolt</h1><table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">传输速度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Thunderbolt 1</td>
-<td align="center">10 Gbit&#x2F;s</td>
-</tr>
-<tr>
-<td align="center">Thunderbolt 2</td>
-<td align="center">20 Gbit&#x2F;s</td>
-</tr>
-<tr>
-<td align="center">Thunderbolt 3</td>
-<td align="center">40 Gbit&#x2F;s</td>
-</tr>
-<tr>
-<td align="center">Thunderbolt 4</td>
-<td align="center">40 Gbit&#x2F;s</td>
-</tr>
-</tbody></table>
+<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><ul>
+<li>2023.11.5：EndNote 21.1 → EndNote 21.2<br>2023.11.5：FME Form 2023.1→ FME Form 2023.1.1.1<br>2023.11.5：Metashape Pro 2.0.3 → Metashape Pro 2.1.0<br>2023.11.5：Rhino 7.32 → Rhino 7.34</li>
+<li>2023.10.10：Metashape Pro 2.0.2 → Metashape Pro 2.0.3</li>
+<li>2023.10.1：Surfer 25.1.229 → Surfer 26.1.216<br>2023.10.1：Global Mapper Pro 24.1.0 → Global Mapper Pro 25.0<br>2023.10.1：新增 EndNote 21.1</li>
+<li>2023.9.11：Rhino 7.31 → Rhino 7.32<br>2023.9.11：ContextCapture 10.20 → ContextCapture 23.0.0.1317<br>2023.9.11：FME Form 2023.0.2 → FME Form 2023.1<br>2023.9.11：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）</li>
+<li>2023.8.25：新增 FME Form 2023.0.2</li>
+<li>2023.7.15：MATLAB R2022b → MATLAB R2023a<br>2023.7.15：CASS 11.0.0.8 → CASS 11.0.0.8（版本号不变，更新安装包）<br>2023.7.15：SARscape 5.6.2 → SARscape 5.6.2.1<br>2023.7.15：Metashape Pro 1.8.5 → Metashape Pro 2.0.2<br>2023.7.15：新增 Rhino 7.31</li>
+<li>2023.6.6：更新所有软件安装包的分享链接</li>
+<li>2023.2.21：Surfer 21.1.158 → Surfer 25.1.229<br>2023.2.21：Global Mapper Pro 24.0.0 → Global Mapper Pro 24.1.0<br>2023.2.21：调整软件顺序，按首字母升序排列</li>
+<li>2023.1.13：调整 SARscape 5.6.2 分享链接<br>2023.1.13：新增 SARScape 5.6.2_20220921 补丁包</li>
+<li>2022.10.28：Global Mapper Pro 23.1.0 → Global Mapper Pro 24.0.0<br>2022.10.28：ContextCapture 10.18 → ContextCapture 10.20<br>2022.10.28：新增 SPSS 27.0.1</li>
+<li>2022.10.12：CASS 11.0.0.6 → CASS 11.0.0.8<br>2022.10.12：ArcGIS Pro 3.0.1 → ArcGIS Pro 3.0.2<br>2022.10.12：Surfer 21.1.158 → Surfer 23.3.202<br>2022.10.12：新增 Metashape Pro 1.8.5<br>2022.10.12：新增 Pix4Dmapper 4.5.6<br>2022.10.12：新增 OriginPro 2022 SR1</li>
+<li>2022.9.19：MATLAB R2022a → MATLAB R2022b</li>
+<li>2022.9.17：ArcGIS Pro 2.8.6 → ArcGIS Pro 3.0.1</li>
+<li>2022.8.9：CASS 10.1.6 → CASS 11.0.0.6<br>2022.8.9：完善 CASS 11.0.0.6 压缩包中的安装说明</li>
+<li>2022.8.6：CloudCompare 2.12.3 → CloudCompare 2.12.4<br>2022.8.6：IDL ENVI 5.3.1 → IDL ENVI 5.6.0<br>2022.8.6：SARscape 5.2.1 → SARscape 5.6.2</li>
+<li>2022.8.4：Global Mapper 22.0.0 → Global Mapper Pro 23.1.0</li>
+</ul>
 ]]></content>
       <categories>
-        <category>系统维护</category>
+        <category>测绘</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vcpkg包管理器快速入门</title>
+    <url>/2023/6250.html/</url>
+    <content><![CDATA[<p>Windows 下开发 C&#x2F;C++ 程序，少不了编译或配置第三方库，如GDAL、CGAL、PCL库等。但这些库编译或配置起来极为复杂，动辄需要花费半天甚至更久的时间。并且 C# 有 Nuget 包管理器、Python 有 PIP 包管理器，而 C&#x2F;C++ 却没有统一的包管理器。为了解决这个问题，微软在几年前推出 vcpkg 包管理器，本文将介绍此包管理器的使用。</p>
+<span id="more"></span>
+
+<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><p>前置条件:</p>
+<ul>
+<li>Windows 7 或更新的版本</li>
+<li>Git</li>
+<li>Visual Studio 2015 Update 3 或更新的版本（<strong>包含英文语言包</strong>）</li>
+</ul>
+<ol>
+<li><p>从 GitHub 上创建项目的副本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/microsoft/vcpkg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推荐使用 Powershell 运行 bootstrap.bat 脚本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\bootstrap<span class="literal">-vcpkg</span>.bat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装需要的库，如：PCL</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg install pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载不需要的库，如：PCL</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg remove pcl:x64<span class="literal">-windows</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出已经安装的库</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集成到  Visual Studio 中，(可能需要管理员权限)</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">.\vcpkg\vcpkg integrate install</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>所有已安装的库均可使用 <code>#include</code> 包含您需使用的库的头文件且无需额外配置。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pcl/io/pcd_io.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li>vcpkg：<a href="https://vcpkg.io/en/getting-started.html">https://vcpkg.io/en/getting-started.html</a></li>
+<li>Microsoft：<a href="https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md">https://github.com/microsoft/vcpkg/blob/master/README_zh_CN.md</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>开发工具</category>
       </categories>
   </entry>
 </search>
